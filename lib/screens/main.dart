@@ -75,13 +75,14 @@ class _MainState extends State<Main> {
             visible: MediaQuery.of(context).viewInsets.bottom ==
                 0.0, // if the kyeboard is open then hide, else show
             child: FloatingActionButton(
-              backgroundColor: MyTheme.white,
+              backgroundColor: MyTheme.splash_screen_color,
               onPressed: () {},
               tooltip: "start FAB",
               child: Container(
                   margin: EdgeInsets.all(0.0),
                   child: IconButton(
-                      icon: new Image.asset('assets/app_logo.jpg'),
+                      icon:  Image.asset('assets/app_logo.jpg',height: 50,width: 50,
+                      fit: BoxFit.cover,),
                       tooltip: 'Action',
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) {

@@ -3,16 +3,16 @@ import 'package:flutter/material.dart';
 var this_year = DateTime.now().year.toString();
 
 class AppConfig {
-  static String copyright_text = "@ OriginalStore " + this_year; //this shows in the splash screen
-  static String app_name = "Original Store"; //this shows in the splash screen
+  static String copyright_text = "@ArtGallery " + this_year; //this shows in the splash screen
+  static String app_name = "Art Gallery"; //this shows in the splash screen
   static String purchase_code = "9c5cebe7-94ec-4423-a5b5-33f4a36440ab"; //enter your purchase code for the app from codecanyon
   //static String purchase_code = ""; //enter your purchase code for the app from codecanyon
 
   //configure this
-  static const bool HTTPS = true;
+  static const bool HTTPS = false;
 
   //configure this
-  static const DOMAIN_PATH = "my-originals.com"; //localhost
+  static const DOMAIN_PATH = "artgallery.lacasacode.com"; //localhost
   //static const DOMAIN_PATH = "demo.activeitzone.com/ecommerce_flutter_demo"; //inside a folder
   //static const DOMAIN_PATH = "mydomain.com"; // directly inside the public folder
 
