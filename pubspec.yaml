@@ -26,14 +26,14 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   http: ^0.13.4
-  provider: ^5.0.0
+  provider:
   json_annotation: ^4.1.0
   logging: ^1.0.2
   connectivity: ^3.0.6
   shimmer: ^2.0.0
   bordered_text: ^2.0.0
   flutter_html: ^2.1.5
-  flutter_svg: ^0.22.0
+  flutter_svg:
   url_launcher: ^6.0.12
   toast: ^0.1.5
   shared_preferences: ^2.0.8
@@ -65,22 +65,25 @@ dependencies:
   image_picker: ^0.8.4+2
   flutter_facebook_login: ^3.0.0
   google_sign_in: ^5.1.1
-  google_maps_place_picker: ^2.1.0-nullsafety.3
   firebase_messaging: ^10.0.8
   one_context: ^1.1.1
   social_share: ^2.0.4
   flutter_typeahead: ^3.2.1
   photo_view: ^0.13.0
-  intl: ^0.17.0
+  flutter_math_fork: ^0.5.0
+  intl:
 
 dev_dependencies:
+  flutter_localizations:
+    sdk: flutter
   flutter_test:
     sdk: flutter
+  flutter_localized_locales:
   build_runner: ^2.1.4
   json_serializable: ^5.0.2
   flutter_launcher_icons: ^0.9.2
   google_maps_flutter: ^2.0.11
-
+  flutter_gen_runner:
 
 flutter_icons:
   android: true
@@ -97,9 +100,6 @@ flutter:
   assets:
     - assets/
     - dummy_assets/
-
-
-
 
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
