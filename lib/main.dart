@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/screens/splash.dart';
-import 'package:active_ecommerce_flutter/screens/main.dart';
 import 'package:shared_value/shared_value.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'dart:async';
@@ -16,9 +15,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'package:active_ecommerce_flutter/providers/locale_provider.dart';
-import 'package:active_ecommerce_flutter/services/navigation_service.dart';
 import 'lang_config.dart';
-
+//  02 353 20740
 main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([

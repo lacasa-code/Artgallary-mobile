@@ -71,20 +71,20 @@ class _MainDrawerState extends State<MainDrawer> {
                             color: Color.fromRGBO(153, 153, 153, 1),
                             fontSize: 14)),
                 Divider(),
-                // ListTile(
-                //     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-                //     leading: Image.asset("assets/language.png",
-                //         height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
-                //     title: Text(AppLocalizations.of(context).main_drawer_change_language,
-                //         style: TextStyle(
-                //             color: Color.fromRGBO(153, 153, 153, 1),
-                //             fontSize: 14)),
-                //     onTap: () {
-                //       Navigator.push(context,
-                //           MaterialPageRoute(builder: (context) {
-                //             return ChangeLanguage();
-                //           }));
-                //     }),
+                ListTile(
+                    visualDensity: VisualDensity(horizontal: -4, vertical: -4),
+                    leading: Image.asset("assets/language.png",
+                        height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
+                    title: Text(AppLocalizations.of(context).main_drawer_change_language,
+                        style: TextStyle(
+                            color: Color.fromRGBO(153, 153, 153, 1),
+                            fontSize: 14)),
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) {
+                            return ChangeLanguage();
+                          }));
+                    }),
                 ListTile(
                     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
                     leading: Image.asset("assets/home.png",
@@ -103,7 +103,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/profile.png",
+                        leading: Image.asset( "assets/profile.png",
                             height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
                         title: Text(AppLocalizations.of(context).main_drawer_profile,
                             style: TextStyle(
