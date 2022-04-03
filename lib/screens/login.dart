@@ -300,7 +300,7 @@ class _LoginState extends State<Login> {
                             ),
                           )
                         else
-                          Padding(
+                        Padding(
                             padding: const EdgeInsets.only(bottom: 8.0),
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.end,
@@ -359,7 +359,7 @@ class _LoginState extends State<Login> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            "Password",
+                            AppLocalizations.of(context).login_screen_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
