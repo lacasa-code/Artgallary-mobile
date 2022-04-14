@@ -84,7 +84,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: Stack(
           children: [
@@ -111,7 +111,7 @@ class _CategoryProductsState extends State<CategoryProducts> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       toolbarHeight: 75,
       /*bottom: PreferredSize(
           child: Container(
@@ -142,18 +142,19 @@ class _CategoryProductsState extends State<CategoryProducts> {
             },
             autofocus: false,
             decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white,
                 hintText:
                     "${AppLocalizations.of(context).category_products_screen_search_products_from} : " +
                         widget.category_name,
-                hintStyle:
-                    TextStyle(fontSize: 14.0, color: MyTheme.textfield_grey),
+                hintStyle: TextStyle(fontSize: 14.0, color: MyTheme.font_grey),
                 enabledBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: MyTheme.white, width: 0.0),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderSide: BorderSide(color: MyTheme.white, width: 0.0),
                 ),
-                contentPadding: EdgeInsets.all(0.0)),
+                contentPadding: EdgeInsets.symmetric(horizontal: 5)),
           )),
       elevation: 0.0,
       titleSpacing: 0,

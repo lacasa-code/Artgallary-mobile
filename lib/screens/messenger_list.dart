@@ -7,7 +7,6 @@ import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class MessengerList extends StatefulWidget {
   @override
   _MessengerListState createState() => _MessengerListState();
@@ -45,7 +44,8 @@ class _MessengerListState extends State<MessengerList> {
   }
 
   fetchData() async {
-    var conversatonResponse = await ChatRepository().getConversationResponse(page: _page);
+    var conversatonResponse =
+        await ChatRepository().getConversationResponse(page: _page);
     _list.addAll(conversatonResponse.conversation_item_list);
     _isInitial = false;
     _totalData = conversatonResponse.meta.total;
@@ -72,7 +72,7 @@ class _MessengerListState extends State<MessengerList> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: Stack(
           children: [
@@ -98,7 +98,8 @@ class _MessengerListState extends State<MessengerList> {
               ),
             ),
             Align(
-                alignment: Alignment.bottomCenter, child: buildLoadingContainer())
+                alignment: Alignment.bottomCenter,
+                child: buildLoadingContainer())
           ],
         ),
       ),
@@ -120,7 +121,7 @@ class _MessengerListState extends State<MessengerList> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(

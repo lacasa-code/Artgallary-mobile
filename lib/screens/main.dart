@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/screens/cart.dart';
 import 'package:active_ecommerce_flutter/screens/category_list.dart';
@@ -12,20 +14,15 @@ import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class Main extends StatefulWidget {
-
-  Main({Key key, go_back = true})
-      : super(key: key);
+  Main({Key key, go_back = true}) : super(key: key);
 
   bool go_back;
-
 
   @override
   _MainState createState() => _MainState();
 }
 
 class _MainState extends State<Main> {
-
-
   int _currentIndex = 0;
   var _children = [
     Home(),
@@ -38,6 +35,10 @@ class _MainState extends State<Main> {
   ];
 
   void onTapped(int i) {
+    if (i == 2) {
+      return;
+    }
+    log('index => $i');
     setState(() {
       _currentIndex = i;
     });
@@ -49,10 +50,7 @@ class _MainState extends State<Main> {
     SystemChrome.setEnabledSystemUIOverlays(
         [SystemUiOverlay.top, SystemUiOverlay.bottom]);
     super.initState();
-
-
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -61,11 +59,13 @@ class _MainState extends State<Main> {
         return widget.go_back;
       },
       child: Directionality(
-        textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
+        textDirection:
+            app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
         child: Scaffold(
           extendBody: true,
           body: _children[_currentIndex],
-          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButtonLocation:
+              FloatingActionButtonLocation.centerDocked,
           //specify the location of the FAB
           floatingActionButton: Visibility(
             visible: MediaQuery.of(context).viewInsets.bottom ==
@@ -77,11 +77,16 @@ class _MainState extends State<Main> {
               child: Container(
                   margin: EdgeInsets.all(0.0),
                   child: IconButton(
-                      icon:  Image.asset('assets/app_logo.jpg',height: 50,width: 50,
-                      fit: BoxFit.cover,),
+                      icon: Image.asset(
+                        'assets/app_logo.jpg',
+                        height: 50,
+                        width: 50,
+                        fit: BoxFit.cover,
+                      ),
                       tooltip: 'Action',
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: (context) {
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) {
                           return Filter(
                             selected_filter: "sellers",
                           );
@@ -90,63 +95,73 @@ class _MainState extends State<Main> {
               elevation: 0.0,
             ),
           ),
-          bottomNavigationBar: BottomAppBar(
-            color: Colors.transparent,
-            clipBehavior: Clip.antiAlias,
-            child: BackdropFilter(
-              filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-              child: BottomNavigationBar(
-                type: BottomNavigationBarType.fixed,
-                onTap: onTapped,
-                currentIndex: _currentIndex,
-                backgroundColor: Colors.white.withOpacity(0.8),
-                fixedColor: Theme.of(context).accentColor,
-                unselectedItemColor: Color.fromRGBO(153, 153, 153, 1),
-                items: [
-                  BottomNavigationBarItem(
-                      icon: Image.asset(
-                        "assets/home.png",
-                        color: _currentIndex == 0
-                            ? Theme.of(context).accentColor
-                            : Color.fromRGBO(153, 153, 153, 1),
-                        height: 20,
-                      ),
-                      label: AppLocalizations.of(context).main_screen_bottom_navigation_home),
-                  BottomNavigationBarItem(
-                      icon: Image.asset(
-                        "assets/categories.png",
-                        color: _currentIndex == 1
-                            ? Theme.of(context).accentColor
-                            : Color.fromRGBO(153, 153, 153, 1),
-                        height: 20,
-                      ),
-                      label: AppLocalizations.of(context).main_screen_bottom_navigation_categories),
-                  BottomNavigationBarItem(
-                    icon: Icon(
-                      Icons.circle,
-                      color: Colors.transparent,
-                    ),
-                    label: ''
-                  ),
-                  BottomNavigationBarItem(
-                      icon: Image.asset(
-                        "assets/cart.png",
-                        color: _currentIndex == 3
-                            ? Theme.of(context).accentColor
-                            : Color.fromRGBO(153, 153, 153, 1),
-                        height: 20,
-                      ),
-                     label: AppLocalizations.of(context).main_screen_bottom_navigation_cart),
-                  BottomNavigationBarItem(
+          bottomNavigationBar: Theme(
+            data: ThemeData(
+              splashColor: Colors.transparent,
+              highlightColor: Colors.transparent,
+            ),
+            child: BottomAppBar(
+              color: Colors.transparent,
+              clipBehavior: Clip.antiAlias,
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
+                child: BottomNavigationBar(
+                  type: BottomNavigationBarType.fixed,
+                  onTap: onTapped,
+                  currentIndex: _currentIndex,
+                  backgroundColor: Colors.white.withOpacity(0.8),
+                  fixedColor: Theme.of(context).accentColor,
+                  unselectedItemColor: Color.fromRGBO(153, 153, 153, 1),
+                  items: [
+                    BottomNavigationBarItem(
+                        icon: Image.asset(
+                          "assets/home.png",
+                          color: _currentIndex == 0
+                              ? Theme.of(context).accentColor
+                              : Color.fromRGBO(153, 153, 153, 1),
+                          height: 20,
+                        ),
+                        label: AppLocalizations.of(context)
+                            .main_screen_bottom_navigation_home),
+                    BottomNavigationBarItem(
+                        icon: Image.asset(
+                          "assets/categories.png",
+                          color: _currentIndex == 1
+                              ? Theme.of(context).accentColor
+                              : Color.fromRGBO(153, 153, 153, 1),
+                          height: 20,
+                        ),
+                        label: AppLocalizations.of(context)
+                            .main_screen_bottom_navigation_categories),
+                    BottomNavigationBarItem(
+                        icon: Icon(
+                          Icons.circle,
+                          color: Colors.transparent,
+                        ),
+                        label: ''),
+                    BottomNavigationBarItem(
+                        icon: Image.asset(
+                          "assets/cart.png",
+                          color: _currentIndex == 3
+                              ? Theme.of(context).accentColor
+                              : Color.fromRGBO(153, 153, 153, 1),
+                          height: 20,
+                        ),
+                        label: AppLocalizations.of(context)
+                            .main_screen_bottom_navigation_cart),
+                    BottomNavigationBarItem(
                       icon: Image.asset(
                         "assets/profile.png",
                         color: _currentIndex == 4
                             ? Theme.of(context).accentColor
                             : Color.fromRGBO(153, 153, 153, 1),
                         height: 20,
-                      ),label: AppLocalizations.of(context).main_screen_bottom_navigation_profile,
                       ),
-                ],
+                      label: AppLocalizations.of(context)
+                          .main_screen_bottom_navigation_profile,
+                    ),
+                  ],
+                ),
               ),
             ),
           ),

@@ -1,4 +1,7 @@
+import 'package:active_ecommerce_flutter/data_model/product_mini_response.dart';
+import 'package:active_ecommerce_flutter/helpers/constants.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
+import 'package:active_ecommerce_flutter/providers/categories_provider.dart';
 import 'package:active_ecommerce_flutter/screens/filter.dart';
 import 'package:active_ecommerce_flutter/screens/flash_deal_list.dart';
 import 'package:active_ecommerce_flutter/screens/todays_deal_products.dart';
@@ -12,6 +15,7 @@ import 'package:active_ecommerce_flutter/repositories/sliders_repository.dart';
 import 'package:active_ecommerce_flutter/repositories/category_repository.dart';
 import 'package:active_ecommerce_flutter/repositories/product_repository.dart';
 import 'package:active_ecommerce_flutter/app_config.dart';
+import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
 import 'package:toast/toast.dart';
@@ -19,7 +23,6 @@ import 'package:active_ecommerce_flutter/ui_elements/product_card.dart';
 import 'package:active_ecommerce_flutter/helpers/shimmer_helper.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Home extends StatefulWidget {
   Home({Key key, this.title, this.show_back_button = false, go_back = true})
@@ -47,13 +50,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   int _current_slider = 0;
   ScrollController _featuredProductScrollController;
   ScrollController _mainScrollController = ScrollController();
+  var isInit = true;
 
   AnimationController pirated_logo_controller;
   Animation pirated_logo_animation;
 
   var _carouselImageList = [];
   var _featuredCategoryList = [];
-  var _featuredProductList = [];
+  List<Product> _featuredProductList = [];
   bool _isProductInitial = true;
   bool _isCategoryInitial = true;
   bool _isCarouselInitial = true;
@@ -113,6 +117,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     var productResponse = await ProductRepository().getFeaturedProducts(
       page: _productPage,
     );
+  
 
     _featuredProductList.addAll(productResponse.products);
     _isProductInitial = false;
@@ -163,6 +168,16 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
   }
 
   @override
+  void didChangeDependencies() {
+    if (isInit) {
+      Provider.of<CategoriesProvider>(context, listen: false)
+          .fetchFeaturedCategories();
+      isInit = false;
+    }
+    super.didChangeDependencies();
+  }
+
+  @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
@@ -180,10 +195,11 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         return widget.go_back;
       },
       child: Directionality(
-        textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
+        textDirection:
+            app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
         child: Scaffold(
             key: _scaffoldKey,
-            backgroundColor: Colors.white,
+            backgroundColor: Helper.kMainBackgroundColor,
             appBar: buildAppBar(statusBarHeight, context),
             drawer: MainDrawer(),
             body: Stack(
@@ -217,12 +233,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                             left: 20,
                                             top: 0,
                                             child: AnimatedBuilder(
-                                                animation: pirated_logo_animation,
+                                                animation:
+                                                    pirated_logo_animation,
                                                 builder: (context, child) {
                                                   return Image.asset(
                                                     "assets/pirated_square.png",
-                                                    height: pirated_logo_animation
-                                                        .value,
+                                                    height:
+                                                        pirated_logo_animation
+                                                            .value,
                                                     color: Colors.white,
                                                   );
                                                 })),
@@ -276,7 +294,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context).home_screen_featured_categories,
+                                  AppLocalizations.of(context)
+                                      .home_screen_featured_categories,
                                   style: TextStyle(
                                     fontSize: 16,
                                   ),
@@ -313,7 +332,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  AppLocalizations.of(context).home_screen_featured_products,
+                                  AppLocalizations.of(context)
+                                      .home_screen_featured_products,
                                   style: TextStyle(fontSize: 16),
                                 ),
                               ],
@@ -380,11 +400,15 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
               name: _featuredProductList[index].name,
               main_price: _featuredProductList[index].main_price,
               stroked_price: _featuredProductList[index].stroked_price,
-              has_discount: _featuredProductList[index].has_discount);
+              has_discount: _featuredProductList[index].has_discount,
+              // isFav: _featuredProductList[index].,
+              );
         },
       );
     } else if (_totalProductData == 0) {
-      return Center(child: Text(AppLocalizations.of(context).common_no_product_is_available));
+      return Center(
+          child: Text(
+              AppLocalizations.of(context).common_no_product_is_available));
     } else {
       return Container(); // should never be happening
     }
@@ -590,7 +614,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context).home_screen_top_sellers,
+                    child: Text(
+                        AppLocalizations.of(context).home_screen_top_sellers,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -623,7 +648,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context).home_screen_todays_deal,
+                    child: Text(
+                        AppLocalizations.of(context).home_screen_todays_deal,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -656,7 +682,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     )),
                 Padding(
                     padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context).home_screen_flash_deal,
+                    child: Text(
+                        AppLocalizations.of(context).home_screen_flash_deal,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Color.fromRGBO(132, 132, 132, 1),
@@ -749,7 +776,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).home_screen_no_carousel_image_found,
+            AppLocalizations.of(context).home_screen_no_carousel_image_found,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -762,7 +789,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   AppBar buildAppBar(double statusBarHeight, BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       leading: GestureDetector(
         onTap: () {
           _scaffoldKey.currentState.openDrawer();
@@ -772,7 +799,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                 builder: (context) => IconButton(
                     icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
                     onPressed: () {
-                      if(!widget.go_back){
+                      if (!widget.go_back) {
                         return;
                       }
                       return Navigator.of(context).pop();
@@ -800,7 +827,9 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         //MediaQuery.of(context).viewPadding.top is the statusbar height, with a notch phone it results almost 50, without a notch it shows 24.0.For safety we have checked if its greater than thirty
         child: Container(
           child: Padding(
-              padding: app_language_rtl.$ ? const EdgeInsets.only(top: 14.0, bottom: 14, left: 12) : const EdgeInsets.only(top: 14.0, bottom: 14, right: 12),
+              padding: app_language_rtl.$
+                  ? const EdgeInsets.only(top: 14.0, bottom: 14, left: 12)
+                  : const EdgeInsets.only(top: 14.0, bottom: 14, right: 12),
               // when notification bell will be shown , the right padding will cease to exist.
               child: GestureDetector(
                   onTap: () {
@@ -817,7 +846,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       actions: <Widget>[
         InkWell(
           onTap: () {
-            ToastComponent.showDialog(AppLocalizations.of(context).common_coming_soon, context,
+            ToastComponent.showDialog(
+                AppLocalizations.of(context).common_coming_soon, context,
                 gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
           },
           child: Visibility(
@@ -846,6 +876,8 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       },
       autofocus: false,
       decoration: InputDecoration(
+          fillColor: Colors.white,
+          filled: true,
           hintText: AppLocalizations.of(context).home_screen_search,
           hintStyle: TextStyle(fontSize: 12.0, color: MyTheme.textfield_grey),
           enabledBorder: OutlineInputBorder(

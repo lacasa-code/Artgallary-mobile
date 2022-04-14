@@ -1,3 +1,4 @@
+import 'package:active_ecommerce_flutter/helpers/constants.dart';
 import 'package:active_ecommerce_flutter/screens/checkout.dart';
 
 import 'package:flutter/gestures.dart';
@@ -21,7 +22,7 @@ import 'package:flutter_typeahead/flutter_typeahead.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 
 class Address extends StatefulWidget {
-  Address({Key key,this.from_shipping_info = false}) : super(key: key);
+  Address({Key key, this.from_shipping_info = false}) : super(key: key);
   bool from_shipping_info;
   @override
   _AddressState createState() => _AddressState();
@@ -324,15 +325,12 @@ class _AddressState extends State<Address> {
       return;
     }
 
-
     if (_selected_city_list_for_update[index] == null) {
       ToastComponent.showDialog(
           AppLocalizations.of(context).address_screen_city_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
-
-
 
     var addressUpdateResponse = await AddressRepository()
         .getAddressUpdateResponse(
@@ -465,7 +463,7 @@ class _AddressState extends State<Address> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: Helper.kMainBackgroundColor,
         appBar: buildAppBar(context),
         bottomNavigationBar: buildBottomAppBar(context),
         body: RefreshIndicator(
@@ -1257,14 +1255,18 @@ class _AddressState extends State<Address> {
                           height: 40,
                           child: TypeAheadField(
                             suggestionsCallback: (name) async {
-                              if (_selected_state_list_for_update[index] == null) {
+                              if (_selected_state_list_for_update[index] ==
+                                  null) {
                                 var cityResponse = await AddressRepository()
                                     .getCityListByState(); // blank response
                                 return cityResponse.cities;
                               }
                               var cityResponse = await AddressRepository()
                                   .getCityListByState(
-                                      state_id: _selected_state_list_for_update[index].id, name: name);
+                                      state_id:
+                                          _selected_state_list_for_update[index]
+                                              .id,
+                                      name: name);
                               return cityResponse.cities;
                             },
                             loadingBuilder: (context) {
@@ -1489,7 +1491,7 @@ class _AddressState extends State<Address> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
@@ -1845,7 +1847,7 @@ class _AddressState extends State<Address> {
 
   buildBottomAppBar(BuildContext context) {
     return Visibility(
-      visible:  widget.from_shipping_info,
+      visible: widget.from_shipping_info,
       child: BottomAppBar(
         child: Container(
           color: Colors.transparent,

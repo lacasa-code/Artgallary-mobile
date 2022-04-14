@@ -36,9 +36,6 @@ class _ShippingInfoState extends State<ShippingInfo> {
 
   String _shipping_cost_string = ". . .";
 
-
-
-
   @override
   void initState() {
     // TODO: implement initState
@@ -91,8 +88,6 @@ class _ShippingInfoState extends State<ShippingInfo> {
     }
   }
 
-
-
   reset() {
     _shippingAddressList.clear();
     _cityList.clear();
@@ -110,8 +105,8 @@ class _ShippingInfoState extends State<ShippingInfo> {
   }
 
   onPopped(value) async {
-     reset();
-     fetchAll();
+    reset();
+    fetchAll();
   }
 
   afterAddingAnAddress() {
@@ -125,11 +120,11 @@ class _ShippingInfoState extends State<ShippingInfo> {
     getSetShippingCost();
   }
 
-
   onPressProceed(context) async {
     if (_seleted_shipping_address == 0) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context).shipping_info_screen_address_choice_warning,
+          AppLocalizations.of(context)
+              .shipping_info_screen_address_choice_warning,
           context,
           gravity: Toast.CENTER,
           duration: Toast.LENGTH_LONG);
@@ -166,7 +161,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: MyTheme.kMainBackgroundColor,
           appBar: buildAppBar(context),
           bottomNavigationBar: buildBottomAppBar(context),
           body: RefreshIndicator(
@@ -185,7 +180,6 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     padding: const EdgeInsets.all(16.0),
                     child: buildShippingInfoList(),
                   ),
-
                   Container(
                       height: 40,
                       child: Center(
@@ -193,7 +187,9 @@ class _ShippingInfoState extends State<ShippingInfo> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return Address(from_shipping_info: true,);
+                            return Address(
+                              from_shipping_info: true,
+                            );
                           })).then((value) {
                             onPopped(value);
                           });
@@ -204,7 +200,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                             AppLocalizations.of(context)
                                 .shipping_info_screen_go_to_address,
                             style: TextStyle(
-                              fontSize: 14,
+                                fontSize: 14,
                                 decoration: TextDecoration.underline,
                                 color: MyTheme.accent_color),
                           ),
@@ -220,11 +216,9 @@ class _ShippingInfoState extends State<ShippingInfo> {
     );
   }
 
-
-
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
@@ -370,8 +364,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 75,
                       child: Text(
-                        AppLocalizations.of(context)
-                            .shipping_info_screen_state,
+                        AppLocalizations.of(context).shipping_info_screen_state,
                         style: TextStyle(
                           color: MyTheme.grey_153,
                         ),

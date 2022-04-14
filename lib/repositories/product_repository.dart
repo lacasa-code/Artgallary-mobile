@@ -1,3 +1,6 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:active_ecommerce_flutter/data_model/product_mini_response.dart';
@@ -12,6 +15,7 @@ class ProductRepository {
     final response = await http.get(url, headers: {
       "App-Language": app_language.$,
     });
+    log('products: => ${jsonDecode(response.body)}');
     return productMiniResponseFromJson(response.body);
   }
 
@@ -98,6 +102,7 @@ class ProductRepository {
     final response = await http.get(url, headers: {
       "App-Language": app_language.$,
     });
+    log('details: ${jsonDecode(response.body)}');
     return productDetailsResponseFromJson(response.body);
   }
 

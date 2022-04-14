@@ -33,12 +33,12 @@ class _CategoryListState extends State<CategoryList> {
 
   @override
   Widget build(BuildContext context) {
-     return Directionality(
+    return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
           key: _scaffoldKey,
           drawer: MainDrawer(),
-          backgroundColor: Colors.white,
+          backgroundColor: MyTheme.kMainBackgroundColor,
           appBar: buildAppBar(context),
           body: Stack(children: [
             CustomScrollView(
@@ -66,7 +66,7 @@ class _CategoryListState extends State<CategoryList> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: widget.is_base_category
           ? GestureDetector(
@@ -104,7 +104,9 @@ class _CategoryListState extends State<CategoryList> {
 
   String getAppBarTitle() {
     String name = widget.parent_category_name == ""
-        ? (widget.is_top_category ? AppLocalizations.of(context).category_list_screen_top_categories : AppLocalizations.of(context).category_list_screen_categories)
+        ? (widget.is_top_category
+            ? AppLocalizations.of(context).category_list_screen_top_categories
+            : AppLocalizations.of(context).category_list_screen_categories)
         : widget.parent_category_name;
 
     return name;
@@ -267,13 +269,16 @@ class _CategoryListState extends State<CategoryList> {
                           }));
                         } else {
                           ToastComponent.showDialog(
-                              AppLocalizations.of(context).category_list_screen_no_subcategories, context,
+                              AppLocalizations.of(context)
+                                  .category_list_screen_no_subcategories,
+                              context,
                               gravity: Toast.CENTER,
                               duration: Toast.LENGTH_LONG);
                         }
                       },
                       child: Text(
-                        AppLocalizations.of(context).category_list_screen_view_subcategories,
+                        AppLocalizations.of(context)
+                            .category_list_screen_view_subcategories,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -305,7 +310,8 @@ class _CategoryListState extends State<CategoryList> {
                         }));
                       },
                       child: Text(
-                        AppLocalizations.of(context).category_list_screen_view_products,
+                        AppLocalizations.of(context)
+                            .category_list_screen_view_products,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
@@ -349,7 +355,10 @@ class _CategoryListState extends State<CategoryList> {
                       borderRadius:
                           const BorderRadius.all(Radius.circular(8.0))),
                   child: Text(
-                    AppLocalizations.of(context).category_list_screen_all_products_of + " " + widget.parent_category_name,
+                    AppLocalizations.of(context)
+                            .category_list_screen_all_products_of +
+                        " " +
+                        widget.parent_category_name,
                     style: TextStyle(
                         color: Colors.white,
                         fontSize: 13,

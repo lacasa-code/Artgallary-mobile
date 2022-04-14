@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:http/http.dart' as http;
 import 'package:active_ecommerce_flutter/data_model/login_response.dart';
@@ -11,7 +13,6 @@ import 'package:active_ecommerce_flutter/data_model/user_by_token.dart';
 import 'package:flutter/foundation.dart';
 import 'dart:convert';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
-
 
 class AuthRepository {
   Future<LoginResponse> getLoginResponse(
@@ -100,6 +101,7 @@ class AuthRepository {
           "App-Language": app_language.$,
         },
         body: post_body);
+    log('response ${response.body}');
 
     return resendCodeResponseFromJson(response.body);
   }

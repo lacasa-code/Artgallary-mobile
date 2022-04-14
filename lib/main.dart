@@ -1,4 +1,5 @@
 import 'package:active_ecommerce_flutter/other_config.dart';
+import 'package:active_ecommerce_flutter/providers/categories_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -86,6 +87,7 @@ class _MyAppState extends State<MyApp> {
     final textTheme = Theme.of(context).textTheme;
     return MultiProvider(
         providers: [
+          ChangeNotifierProvider(create: (_) => CategoriesProvider()),
           ChangeNotifierProvider(create: (_) => LocaleProvider()),
         ],
         child: Consumer<LocaleProvider>(builder: (context, provider, snapshot) {

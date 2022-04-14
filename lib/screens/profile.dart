@@ -1,3 +1,4 @@
+import 'package:active_ecommerce_flutter/helpers/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/ui_sections/drawer.dart';
@@ -14,7 +15,6 @@ import 'package:active_ecommerce_flutter/custom/toast_component.dart';
 import 'package:toast/toast.dart';
 import 'package:active_ecommerce_flutter/addon_config.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
 
 class Profile extends StatefulWidget {
   Profile({Key key, this.show_back_button = false}) : super(key: key);
@@ -126,9 +126,9 @@ class _ProfileState extends State<Profile> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
+        backgroundColor: Helper.kMainBackgroundColor,
         key: _scaffoldKey,
         drawer: MainDrawer(),
-        backgroundColor: Colors.white,
         appBar: buildAppBar(context),
         body: buildBody(context),
       ),
@@ -141,7 +141,7 @@ class _ProfileState extends State<Profile> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).profile_screen_please_log_in,
+            AppLocalizations.of(context).profile_screen_please_log_in,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -332,7 +332,8 @@ class _ProfileState extends State<Profile> {
         children: [
           InkWell(
             onTap: () {
-              ToastComponent.showDialog(AppLocalizations.of(context).common_coming_soon, context,
+              ToastComponent.showDialog(
+                  AppLocalizations.of(context).common_coming_soon, context,
                   gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
             },
             child: Visibility(
@@ -358,7 +359,8 @@ class _ProfileState extends State<Profile> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
-                        AppLocalizations.of(context).profile_screen_notification,
+                        AppLocalizations.of(context)
+                            .profile_screen_notification,
                         textAlign: TextAlign.center,
                         style:
                             TextStyle(color: MyTheme.font_grey, fontSize: 14),
@@ -396,7 +398,8 @@ class _ProfileState extends State<Profile> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Text(
-                      AppLocalizations.of(context).profile_screen_purchase_history,
+                      AppLocalizations.of(context)
+                          .profile_screen_purchase_history,
                       textAlign: TextAlign.center,
                       style: TextStyle(color: MyTheme.font_grey, fontSize: 14),
                     ),
@@ -434,7 +437,8 @@ class _ProfileState extends State<Profile> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 16.0),
                           child: Text(
-                            AppLocalizations.of(context).profile_screen_earning_points,
+                            AppLocalizations.of(context)
+                                .profile_screen_earning_points,
                             textAlign: TextAlign.center,
                             style: TextStyle(
                                 color: MyTheme.font_grey, fontSize: 14),
@@ -447,43 +451,44 @@ class _ProfileState extends State<Profile> {
               : Container(),
           AddonConfig.refund_addon_installed
               ? InkWell(
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) {
-                    return RefundRequest();
-                  }));
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(bottom: 16.0),
-              child: Row(
-                children: [
-                  Container(
-                      height: 40,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        color: Colors.pinkAccent,
-                        shape: BoxShape.circle,
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Icon(
-                          Icons.double_arrow,
-                          color: Colors.white,
-                        ),
-                      )),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                    child: Text(
-                      AppLocalizations.of(context).profile_screen_refund_requests,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: MyTheme.font_grey, fontSize: 14),
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) {
+                      return RefundRequest();
+                    }));
+                  },
+                  child: Padding(
+                    padding: const EdgeInsets.only(bottom: 16.0),
+                    child: Row(
+                      children: [
+                        Container(
+                            height: 40,
+                            width: 40,
+                            decoration: BoxDecoration(
+                              color: Colors.pinkAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Icon(
+                                Icons.double_arrow,
+                                color: Colors.white,
+                              ),
+                            )),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                          child: Text(
+                            AppLocalizations.of(context)
+                                .profile_screen_refund_requests,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: MyTheme.font_grey, fontSize: 14),
+                          ),
+                        )
+                      ],
                     ),
-                  )
-                ],
-              ),
-            ),
-          )
+                  ),
+                )
               : Container(),
         ],
       ),
@@ -582,6 +587,10 @@ class _ProfileState extends State<Profile> {
                 clipBehavior: Clip.hardEdge,
                 borderRadius: BorderRadius.all(Radius.circular(100.0)),
                 child: FadeInImage.assetNetwork(
+                  imageErrorBuilder: ((context, error, stackTrace) =>
+                      Image.asset(
+                        'assets/placeholder.png',
+                      )),
                   placeholder: 'assets/placeholder.png',
                   image: AppConfig.BASE_PATH + "${avatar_original.$}",
                   fit: BoxFit.fill,
@@ -648,7 +657,7 @@ class _ProfileState extends State<Profile> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: GestureDetector(
         child: widget.show_back_button
