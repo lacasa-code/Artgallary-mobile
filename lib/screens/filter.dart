@@ -686,7 +686,7 @@ class _FilterState extends State<Filter> {
                   ),
                   SizedBox(width: 2),
                   Text(
-                    "Sort",
+                    AppLocalizations.of(context).filter_screen_sort,
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 13,
@@ -997,7 +997,8 @@ class _FilterState extends State<Filter> {
                     FlatButton(
                       color: Color.fromRGBO(52, 168, 83, 1),
                       child: Text(
-                        "APPLY",
+                        AppLocalizations.of(context)
+                            .common_apply_in_all_capital,
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {

@@ -38,7 +38,7 @@ class _VideoDescriptionState extends State<VideoDescription> {
       child: Directionality(
         textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
         child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: MyTheme.kMainBackgroundColor,
           body: buildBody(),
         ),
       ),

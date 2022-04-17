@@ -12,6 +12,7 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Main extends StatefulWidget {
   Main({Key key, go_back = true}) : super(key: key);
@@ -140,12 +141,12 @@ class _MainState extends State<Main> {
                         ),
                         label: ''),
                     BottomNavigationBarItem(
-                        icon: Image.asset(
-                          "assets/cart.png",
+                        icon: SvgPicture.asset(
+                          'assets/svg/Buy.svg',
                           color: _currentIndex == 3
                               ? Theme.of(context).accentColor
                               : Color.fromRGBO(153, 153, 153, 1),
-                          height: 20,
+                          // size: 20,
                         ),
                         label: AppLocalizations.of(context)
                             .main_screen_bottom_navigation_cart),

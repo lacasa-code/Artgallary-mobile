@@ -105,7 +105,7 @@ class _WishlistState extends State<Wishlist> {
         ),
       ),
       title: Text(
-        AppLocalizations.of(context).home_screen_featured_categories,
+        AppLocalizations.of(context).main_drawer_my_wishlist,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

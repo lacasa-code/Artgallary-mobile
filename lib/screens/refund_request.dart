@@ -80,7 +80,7 @@ class _RefundRequestState extends State<RefundRequest> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: Stack(
           children: [
@@ -129,7 +129,7 @@ class _RefundRequestState extends State<RefundRequest> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(

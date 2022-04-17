@@ -332,7 +332,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                   controller: _nameController,
                   autofocus: false,
                   decoration: InputDecorations.buildInputDecoration_1(
-                          hint_text: "John Doe")
+                          hintText: "John Doe")
                       .copyWith(
                     filled: true,
                     fillColor: Colors.white,
@@ -362,7 +362,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                       enableSuggestions: false,
                       autocorrect: false,
                       decoration: InputDecorations.buildInputDecoration_1(
-                              hint_text: "• • • • • • • •")
+                              hintText: "• • • • • • • •")
                           .copyWith(
                         filled: true,
                         fillColor: Colors.white,
@@ -398,7 +398,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                   enableSuggestions: false,
                   autocorrect: false,
                   decoration: InputDecorations.buildInputDecoration_1(
-                          hint_text: "• • • • • • • •")
+                          hintText: "• • • • • • • •")
                       .copyWith(
                     filled: true,
                     fillColor: Colors.white,

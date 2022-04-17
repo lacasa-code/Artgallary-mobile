@@ -121,7 +121,7 @@ class _SellerDetailsState extends State<SellerDetails> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-          backgroundColor: Colors.white,
+          backgroundColor: MyTheme.kMainBackgroundColor,
           appBar: buildAppBar(context),
           bottomNavigationBar: buildBottomAppBar(context),
           body: RefreshIndicator(
@@ -494,7 +494,7 @@ class _SellerDetailsState extends State<SellerDetails> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       toolbarHeight: 75,
       leading: Builder(
         builder: (context) => IconButton(

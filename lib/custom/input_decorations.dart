@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 
 class InputDecorations {
-  static InputDecoration buildInputDecoration_1({hint_text = ""}) {
+  static InputDecoration buildInputDecoration_1(
+      {hintText = "", bool filled = false, Color fillColor}) {
     return InputDecoration(
-        hintText: hint_text,
+        filled: filled,
+        fillColor: fillColor,
+        hintText: hintText,
         hintStyle: TextStyle(fontSize: 12.0, color: MyTheme.textfield_grey),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: MyTheme.textfield_grey, width: 0.5),
@@ -21,9 +24,12 @@ class InputDecorations {
         contentPadding: EdgeInsets.symmetric(horizontal: 16.0));
   }
 
-  static InputDecoration buildInputDecoration_phone({hint_text = ""}) {
+  static InputDecoration buildInputDecorationPhone(
+      {hintText = "", bool filled = false, Color fillColor}) {
     return InputDecoration(
-        hintText: hint_text,
+        hintText: hintText,
+        filled: filled,
+        fillColor: fillColor,
         hintStyle: TextStyle(fontSize: 12.0, color: MyTheme.textfield_grey),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: MyTheme.textfield_grey, width: 0.5),

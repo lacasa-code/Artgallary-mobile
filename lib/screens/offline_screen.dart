@@ -17,7 +17,6 @@ import 'package:active_ecommerce_flutter/screens/order_details.dart';
 import 'package:active_ecommerce_flutter/helpers/file_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class OfflineScreen extends StatefulWidget {
   int order_id;
   String details;
@@ -68,13 +67,16 @@ class _OfflineState extends State<OfflineScreen> {
 
     if (amount == "" || name == "" || trx_id == "") {
       ToastComponent.showDialog(
-          AppLocalizations.of(context).offline_screen_amount_name_trxid_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+          AppLocalizations.of(context).offline_screen_amount_name_trxid_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     }
 
     if (_photo_path == "" || _photo_upload_id == 0) {
-      ToastComponent.showDialog(AppLocalizations.of(context).offline_screen_photo_warning, context,
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).offline_screen_photo_warning, context,
           gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
       return;
     }
@@ -108,8 +110,10 @@ class _OfflineState extends State<OfflineScreen> {
       showDialog(
           context: context,
           builder: (BuildContext context) => CupertinoAlertDialog(
-                title: Text(AppLocalizations.of(context).common_photo_permission),
-                content: Text(AppLocalizations.of(context).common_app_needs_permission),
+                title:
+                    Text(AppLocalizations.of(context).common_photo_permission),
+                content: Text(
+                    AppLocalizations.of(context).common_app_needs_permission),
                 actions: <Widget>[
                   CupertinoDialogAction(
                     child: Text(AppLocalizations.of(context).common_deny),
@@ -130,7 +134,8 @@ class _OfflineState extends State<OfflineScreen> {
       _photo_file = await _picker.pickImage(source: ImageSource.gallery);
 
       if (_photo_file == null) {
-        ToastComponent.showDialog(AppLocalizations.of(context).common_no_file_chosen, context,
+        ToastComponent.showDialog(
+            AppLocalizations.of(context).common_no_file_chosen, context,
             gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
         return;
       }
@@ -166,7 +171,7 @@ class _OfflineState extends State<OfflineScreen> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: buildBody(context),
       ),
@@ -175,7 +180,7 @@ class _OfflineState extends State<OfflineScreen> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
@@ -198,7 +203,7 @@ class _OfflineState extends State<OfflineScreen> {
           height: 100,
           child: Center(
               child: Text(
-                AppLocalizations.of(context).common_login_warning,
+            AppLocalizations.of(context).common_login_warning,
             style: TextStyle(color: MyTheme.font_grey),
           )));
     } else {
@@ -254,7 +259,8 @@ class _OfflineState extends State<OfflineScreen> {
             Padding(
               padding: const EdgeInsets.only(bottom: 8.0),
               child: Text(
-                AppLocalizations.of(context).offline_screen_fill_up_necessary_info,
+                AppLocalizations.of(context)
+                    .offline_screen_fill_up_necessary_info,
                 style: TextStyle(color: MyTheme.grey_153, fontSize: 14.0),
               ),
             ),
@@ -274,7 +280,7 @@ class _OfflineState extends State<OfflineScreen> {
                   controller: _amountController,
                   autofocus: false,
                   decoration: InputDecorations.buildInputDecoration_1(
-                      hint_text: "12,000 or Tweleve Thousand Only"),
+                      hintText: "12,000 or Tweleve Thousand Only"),
                 ),
               ),
             ),
@@ -294,7 +300,7 @@ class _OfflineState extends State<OfflineScreen> {
                   controller: _nameController,
                   autofocus: false,
                   decoration: InputDecorations.buildInputDecoration_1(
-                      hint_text: "John Doe"),
+                      hintText: "John Doe"),
                 ),
               ),
             ),
@@ -314,7 +320,7 @@ class _OfflineState extends State<OfflineScreen> {
                   controller: _trxIdController,
                   autofocus: false,
                   decoration: InputDecorations.buildInputDecoration_1(
-                      hint_text: "BNI-4654321354"),
+                      hintText: "BNI-4654321354"),
                 ),
               ),
             ),
@@ -361,7 +367,8 @@ class _OfflineState extends State<OfflineScreen> {
                 _photo_path != ""
                     ? Padding(
                         padding: const EdgeInsets.all(8.0),
-                        child: Text(AppLocalizations.of(context).common_selected),
+                        child:
+                            Text(AppLocalizations.of(context).common_selected),
                       )
                     : Container()
               ],

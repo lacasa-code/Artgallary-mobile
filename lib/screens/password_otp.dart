@@ -9,7 +9,6 @@ import 'package:active_ecommerce_flutter/screens/login.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class PasswordOtp extends StatefulWidget {
   PasswordOtp({Key key, this.verify_by = "email", this.email_or_code})
       : super(key: key);
@@ -47,25 +46,42 @@ class _PasswordOtpState extends State<PasswordOtp> {
     var password_confirm = _passwordConfirmController.text.toString();
 
     if (code == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).password_otp_screen_code_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).password_otp_screen_code_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).password_otp_screen_password_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).password_otp_screen_password_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password_confirm == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).password_otp_screen_password_confirm_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context)
+              .password_otp_screen_password_confirm_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password.length < 6) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context).password_otp_screen_password_length_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+          AppLocalizations.of(context)
+              .password_otp_screen_password_length_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password != password_confirm) {
-      ToastComponent.showDialog(AppLocalizations.of(context).password_otp_screen_password_match_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context)
+              .password_otp_screen_password_match_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     }
 
@@ -106,14 +122,14 @@ class _PasswordOtpState extends State<PasswordOtp> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         body: Stack(
           children: [
-            Container(
-              width: _screen_width * (3 / 4),
-              child: Image.asset(
-                  "assets/splash_login_registration_background_image.png"),
-            ),
+            // Container(
+            //   width: _screen_width * (3 / 4),
+            //   child: Image.asset(
+            //       "assets/splash_login_registration_background_image.png"),
+            // ),
             Container(
               width: double.infinity,
               child: SingleChildScrollView(
@@ -125,14 +141,15 @@ class _PasswordOtpState extends State<PasswordOtp> {
                     child: Container(
                       width: 75,
                       height: 75,
-                      child:
-                          Image.asset('assets/login_registration_form_logo.png'),
+                      child: Image.asset(
+                          'assets/login_registration_form_logo.png'),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      AppLocalizations.of(context).password_otp_screen_enter_the_code_sent,
+                      AppLocalizations.of(context)
+                          .password_otp_screen_enter_the_code_sent,
                       style: TextStyle(
                           color: MyTheme.accent_color,
                           fontSize: 18,
@@ -145,12 +162,14 @@ class _PasswordOtpState extends State<PasswordOtp> {
                         width: _screen_width * (3 / 4),
                         child: _verify_by == "email"
                             ? Text(
-                            AppLocalizations.of(context).password_otp_screen_enter_verification_code_to_email,
+                                AppLocalizations.of(context)
+                                    .password_otp_screen_enter_verification_code_to_email,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: MyTheme.dark_grey, fontSize: 14))
                             : Text(
-                            AppLocalizations.of(context).password_otp_screen_enter_verification_code_to_phone,
+                                AppLocalizations.of(context)
+                                    .password_otp_screen_enter_verification_code_to_phone,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     color: MyTheme.dark_grey, fontSize: 14))),
@@ -172,7 +191,10 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                   autofocus: false,
                                   decoration:
                                       InputDecorations.buildInputDecoration_1(
-                                          hint_text: "A X B 4 J H"),
+                                    hintText: "A X B 4 J H",
+                                    fillColor: Colors.white,
+                                    filled: true,
+                                  ),
                                 ),
                               ),
                             ],
@@ -181,7 +203,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context).password_otp_screen_password,
+                            AppLocalizations.of(context)
+                                .password_otp_screen_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -202,11 +225,12 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                   autocorrect: false,
                                   decoration:
                                       InputDecorations.buildInputDecoration_1(
-                                          hint_text: "• • • • • • • •"),
+                                          hintText: "• • • • • • • •"),
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context).password_otp_screen_password_length_recommendation,
+                                AppLocalizations.of(context)
+                                    .password_otp_screen_password_length_recommendation,
                                 style: TextStyle(
                                     color: MyTheme.textfield_grey,
                                     fontStyle: FontStyle.italic),
@@ -217,7 +241,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context).password_otp_screen_retype_password,
+                            AppLocalizations.of(context)
+                                .password_otp_screen_retype_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -233,8 +258,9 @@ class _PasswordOtpState extends State<PasswordOtp> {
                               obscureText: true,
                               enableSuggestions: false,
                               autocorrect: false,
-                              decoration: InputDecorations.buildInputDecoration_1(
-                                  hint_text: "• • • • • • • •"),
+                              decoration:
+                                  InputDecorations.buildInputDecoration_1(
+                                      hintText: "• • • • • • • •"),
                             ),
                           ),
                         ),
@@ -255,7 +281,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context).common_confirm_ucfirst,
+                                AppLocalizations.of(context)
+                                    .common_confirm_ucfirst,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -276,7 +303,9 @@ class _PasswordOtpState extends State<PasswordOtp> {
                       onTap: () {
                         onTapResend();
                       },
-                      child: Text(AppLocalizations.of(context).password_otp_screen_resend_code,
+                      child: Text(
+                          AppLocalizations.of(context)
+                              .password_otp_screen_resend_code,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               color: MyTheme.accent_color,

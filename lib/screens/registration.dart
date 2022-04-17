@@ -14,7 +14,6 @@ import 'package:active_ecommerce_flutter/repositories/auth_repository.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();
@@ -56,33 +55,56 @@ class _RegistrationState extends State<Registration> {
     var password_confirm = _passwordConfirmController.text.toString();
 
     if (name == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_name_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).registration_screen_name_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (_register_by == 'email' && email == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_email_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).registration_screen_email_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (_register_by == 'phone' && _phone == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_phone_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).registration_screen_phone_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context).registration_screen_password_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password_confirm == "") {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_confirm_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context)
+              .registration_screen_password_confirm_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password.length < 6) {
       ToastComponent.showDialog(
-          AppLocalizations.of(context).registration_screen_password_length_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+          AppLocalizations.of(context)
+              .registration_screen_password_length_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     } else if (password != password_confirm) {
-      ToastComponent.showDialog(AppLocalizations.of(context).registration_screen_password_match_warning, context,
-          gravity: Toast.CENTER, duration: Toast.LENGTH_LONG);
+      ToastComponent.showDialog(
+          AppLocalizations.of(context)
+              .registration_screen_password_match_warning,
+          context,
+          gravity: Toast.CENTER,
+          duration: Toast.LENGTH_LONG);
       return;
     }
 
@@ -110,19 +132,19 @@ class _RegistrationState extends State<Registration> {
 
   @override
   Widget build(BuildContext context) {
-    final _screen_height = MediaQuery.of(context).size.height;
-    final _screen_width = MediaQuery.of(context).size.width;
+    final _screenHeight = MediaQuery.of(context).size.height;
+    final _screenWidth = MediaQuery.of(context).size.width;
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         body: Stack(
           children: [
-            Container(
-              width: _screen_width * (3 / 4),
-              child: Image.asset(
-                  "assets/splash_login_registration_background_image.png"),
-            ),
+            // Container(
+            //   width: _screen_width * (3 / 4),
+            //   child: Image.asset(
+            //       "assets/splash_login_registration_background_image.png"),
+            // ),
             Container(
               width: double.infinity,
               child: SingleChildScrollView(
@@ -134,14 +156,15 @@ class _RegistrationState extends State<Registration> {
                     child: Container(
                       width: 100,
                       height: 100,
-                      child:
-                          Image.asset('assets/login_registration_form_logo.png'),
+                      child: Image.asset(
+                          'assets/login_registration_form_logo.png'),
                     ),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "${AppLocalizations.of(context).registration_screen_join} " + AppConfig.app_name,
+                      "${AppLocalizations.of(context).registration_screen_join} " +
+                          AppConfig.app_name,
                       style: TextStyle(
                           color: MyTheme.accent_color,
                           fontSize: 18,
@@ -149,14 +172,15 @@ class _RegistrationState extends State<Registration> {
                     ),
                   ),
                   Container(
-                    width: _screen_width * (3 / 4),
+                    width: _screenWidth * (3 / 4),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context).registration_screen_name,
+                            AppLocalizations.of(context)
+                                .registration_screen_name,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -169,15 +193,23 @@ class _RegistrationState extends State<Registration> {
                             child: TextField(
                               controller: _nameController,
                               autofocus: false,
-                              decoration: InputDecorations.buildInputDecoration_1(
-                                  hint_text: "John Doe"),
+                              decoration:
+                                  InputDecorations.buildInputDecoration_1(
+                                hintText: "John Doe",
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
                             ),
                           ),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            _register_by == "email" ? AppLocalizations.of(context).registration_screen_email : AppLocalizations.of(context).registration_screen_phone,
+                            _register_by == "email"
+                                ? AppLocalizations.of(context)
+                                    .registration_screen_email
+                                : AppLocalizations.of(context)
+                                    .registration_screen_phone,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -196,7 +228,10 @@ class _RegistrationState extends State<Registration> {
                                     autofocus: false,
                                     decoration:
                                         InputDecorations.buildInputDecoration_1(
-                                            hint_text: "johndoe@example.com"),
+                                      hintText: "johndoe@example.com",
+                                      filled: true,
+                                      fillColor: Colors.white,
+                                    ),
                                   ),
                                 ),
                                 AddonConfig.otp_addon_installed
@@ -207,7 +242,8 @@ class _RegistrationState extends State<Registration> {
                                           });
                                         },
                                         child: Text(
-                                          AppLocalizations.of(context).registration_screen_or_register_with_phone,
+                                          AppLocalizations.of(context)
+                                              .registration_screen_or_register_with_phone,
                                           style: TextStyle(
                                               color: MyTheme.accent_color,
                                               fontStyle: FontStyle.italic,
@@ -238,7 +274,8 @@ class _RegistrationState extends State<Registration> {
                                       print(value);
                                     },
                                     selectorConfig: SelectorConfig(
-                                      selectorType: PhoneInputSelectorType.DIALOG,
+                                      selectorType:
+                                          PhoneInputSelectorType.DIALOG,
                                     ),
                                     ignoreBlank: false,
                                     autoValidateMode: AutovalidateMode.disabled,
@@ -247,11 +284,12 @@ class _RegistrationState extends State<Registration> {
                                     initialValue: phoneCode,
                                     textFieldController: _phoneNumberController,
                                     formatInput: true,
-                                    keyboardType: TextInputType.numberWithOptions(
-                                        signed: true, decimal: true),
+                                    keyboardType:
+                                        TextInputType.numberWithOptions(
+                                            signed: true, decimal: true),
                                     inputDecoration: InputDecorations
-                                        .buildInputDecoration_phone(
-                                            hint_text: "01710 333 558"),
+                                        .buildInputDecorationPhone(
+                                            hintText: "01710 333 558"),
                                     onSaved: (PhoneNumber number) {
                                       //print('On Saved: $number');
                                     },
@@ -264,7 +302,8 @@ class _RegistrationState extends State<Registration> {
                                     });
                                   },
                                   child: Text(
-                                    AppLocalizations.of(context).registration_screen_or_register_with_email,
+                                    AppLocalizations.of(context)
+                                        .registration_screen_or_register_with_email,
                                     style: TextStyle(
                                         color: MyTheme.accent_color,
                                         fontStyle: FontStyle.italic,
@@ -298,13 +337,17 @@ class _RegistrationState extends State<Registration> {
                                   autocorrect: false,
                                   decoration:
                                       InputDecorations.buildInputDecoration_1(
-                                          hint_text: "• • • • • • • •"),
+                                    hintText: "• • • • • • • •",
+                                    filled: true,
+                                    fillColor: Colors.white,
+                                  ),
                                 ),
                               ),
                               Text(
-                                AppLocalizations.of(context).registration_screen_password_length_recommendation,
+                                AppLocalizations.of(context)
+                                    .registration_screen_password_length_recommendation,
                                 style: TextStyle(
-                                    color: MyTheme.textfield_grey,
+                                    color: MyTheme.dark_grey,
                                     fontStyle: FontStyle.italic),
                               )
                             ],
@@ -313,7 +356,8 @@ class _RegistrationState extends State<Registration> {
                         Padding(
                           padding: const EdgeInsets.only(bottom: 4.0),
                           child: Text(
-                            AppLocalizations.of(context).registration_screen_retype_password,
+                            AppLocalizations.of(context)
+                                .registration_screen_retype_password,
                             style: TextStyle(
                                 color: MyTheme.accent_color,
                                 fontWeight: FontWeight.w600),
@@ -329,8 +373,12 @@ class _RegistrationState extends State<Registration> {
                               obscureText: true,
                               enableSuggestions: false,
                               autocorrect: false,
-                              decoration: InputDecorations.buildInputDecoration_1(
-                                  hint_text: "• • • • • • • •"),
+                              decoration:
+                                  InputDecorations.buildInputDecoration_1(
+                                hintText: "• • • • • • • •",
+                                filled: true,
+                                fillColor: Colors.white,
+                              ),
                             ),
                           ),
                         ),
@@ -351,7 +399,8 @@ class _RegistrationState extends State<Registration> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context).registration_screen_register_sign_up,
+                                AppLocalizations.of(context)
+                                    .registration_screen_register_sign_up,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
@@ -367,7 +416,8 @@ class _RegistrationState extends State<Registration> {
                           padding: const EdgeInsets.only(top: 20.0),
                           child: Center(
                               child: Text(
-                                AppLocalizations.of(context).registration_screen_already_have_account,
+                            AppLocalizations.of(context)
+                                .registration_screen_already_have_account,
                             style: TextStyle(
                                 color: MyTheme.medium_grey, fontSize: 12),
                           )),
@@ -389,7 +439,8 @@ class _RegistrationState extends State<Registration> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
-                                AppLocalizations.of(context).registration_screen_log_in,
+                                AppLocalizations.of(context)
+                                    .registration_screen_log_in,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,

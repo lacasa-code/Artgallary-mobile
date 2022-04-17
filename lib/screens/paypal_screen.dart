@@ -11,7 +11,6 @@ import 'package:active_ecommerce_flutter/screens/wallet.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 
-
 class PaypalScreen extends StatefulWidget {
   double amount;
   String payment_type;
@@ -83,7 +82,6 @@ class _PaypalScreenState extends State<PaypalScreen> {
     _initial_url = paypalUrlResponse.url;
     _initial_url_fetched = true;
 
-
     setState(() {});
 
     print(_initial_url);
@@ -95,7 +93,7 @@ class _PaypalScreenState extends State<PaypalScreen> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: buildBody(),
       ),
@@ -142,7 +140,8 @@ class _PaypalScreenState extends State<PaypalScreen> {
     } else if (_initial_url_fetched == false) {
       return Container(
         child: Center(
-          child: Text(AppLocalizations.of(context).paypal_screen_fetching_paypal_url),
+          child: Text(
+              AppLocalizations.of(context).paypal_screen_fetching_paypal_url),
         ),
       );
     } else {
@@ -178,7 +177,7 @@ class _PaypalScreenState extends State<PaypalScreen> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
@@ -187,7 +186,7 @@ backgroundColor: Colors.white,
         ),
       ),
       title: Text(
-          AppLocalizations.of(context).paypal_screen_pay_with_paypal,
+        AppLocalizations.of(context).paypal_screen_pay_with_paypal,
         style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
       ),
       elevation: 0.0,

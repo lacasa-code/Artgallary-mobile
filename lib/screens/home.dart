@@ -199,7 +199,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
             app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
         child: Scaffold(
             key: _scaffoldKey,
-            backgroundColor: Helper.kMainBackgroundColor,
+            backgroundColor: MyTheme.kMainBackgroundColor,
             appBar: buildAppBar(statusBarHeight, context),
             drawer: MainDrawer(),
             body: Stack(

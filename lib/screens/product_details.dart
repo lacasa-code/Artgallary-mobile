@@ -26,6 +26,7 @@ import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
 import 'package:active_ecommerce_flutter/repositories/chat_repository.dart';
 import 'package:active_ecommerce_flutter/screens/chat.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toast/toast.dart';
 import 'package:social_share/social_share.dart';
 import 'dart:async';
@@ -1889,10 +1890,12 @@ class _ProductDetailsState extends State<ProductDetails> {
                 onTap: () {
                   onWishTap();
                 },
-                child: Icon(
-                  FontAwesome.heart_o,
+                child: SvgPicture.asset(
+                  'assets/svg/Heart.svg',
                   color: Color.fromRGBO(230, 46, 4, 1),
-                  size: 20,
+                  // size: 20,
+                  height: 20,
+                  width: 20,
                 ),
               )
       ],

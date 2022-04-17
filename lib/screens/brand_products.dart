@@ -50,7 +50,6 @@ class _BrandProductsState extends State<BrandProducts> {
 
   @override
   void dispose() {
-    // TODO: implement dispose
     _scrollController.dispose();
     _xcrollController.dispose();
     super.dispose();
@@ -83,7 +82,7 @@ class _BrandProductsState extends State<BrandProducts> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
+        backgroundColor: MyTheme.kMainBackgroundColor,
         appBar: buildAppBar(context),
         body: Stack(
           children: [
@@ -110,7 +109,7 @@ class _BrandProductsState extends State<BrandProducts> {
 
   AppBar buildAppBar(BuildContext context) {
     return AppBar(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.transparent,
       leading: Builder(
         builder: (context) => IconButton(
           icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
@@ -134,6 +133,8 @@ class _BrandProductsState extends State<BrandProducts> {
             },
             autofocus: true,
             decoration: InputDecoration(
+                fillColor: Colors.white,
+                filled: true,
                 hintText:
                     "${AppLocalizations.of(context).brand_products_screen_search_product_of_brand} : " +
                         widget.brand_name,
