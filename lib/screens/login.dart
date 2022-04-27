@@ -2,6 +2,7 @@ import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/other_config.dart';
 import 'package:active_ecommerce_flutter/social_config.dart';
+import 'package:active_ecommerce_flutter/vendor/home/view/vendor_home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
@@ -120,7 +121,9 @@ class _LoginState extends State<Login> {
       //push norification ends
 
       Navigator.push(context, MaterialPageRoute(builder: (context) {
-        return Main();
+        return loginResponse.user.type == 'customer'
+            ? Main()
+            : VendorHomeScreen();
       }));
     }
   }

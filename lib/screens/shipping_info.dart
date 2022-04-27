@@ -315,7 +315,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 175,
                       child: Text(
-                        _shippingAddressList[index].address,
+                        _shippingAddressList[index].deliveryStatus,
                         maxLines: 2,
                         style: TextStyle(
                             color: MyTheme.dark_grey,

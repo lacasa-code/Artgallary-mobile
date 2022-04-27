@@ -1097,7 +1097,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               )
                             : Container(),
                         Text(
-                          "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.shipping_address.address}",
+                          "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.shipping_address.deliveryStatus}",
                           maxLines: 3,
                           style: TextStyle(
                             color: MyTheme.grey_153,

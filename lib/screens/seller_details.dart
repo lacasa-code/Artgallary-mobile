@@ -550,7 +550,7 @@ class _SellerDetailsState extends State<SellerDetails> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 8.0, horizontal: 16.0),
                             child: Text(
-                              _shopDetails.address,
+                              _shopDetails.deliveryStatus,
                               maxLines: 3,
                               style: TextStyle(
                                   color: MyTheme.font_grey, fontSize: 14),

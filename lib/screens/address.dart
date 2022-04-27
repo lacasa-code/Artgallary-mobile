@@ -94,7 +94,7 @@ class _AddressState extends State<Address> {
           _default_shipping_address = address.id;
         }
         _addressControllerListForUpdate
-            .add(TextEditingController(text: address.address));
+            .add(TextEditingController(text: address.deliveryStatus));
         _postalCodeControllerListForUpdate
             .add(TextEditingController(text: address.postal_code));
         _phoneControllerListForUpdate
@@ -1595,7 +1595,7 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 175,
                           child: Text(
-                            _shippingAddressList[index].address,
+                            _shippingAddressList[index].deliveryStatus,
                             maxLines: 2,
                             style: TextStyle(
                                 color: MyTheme.dark_grey,

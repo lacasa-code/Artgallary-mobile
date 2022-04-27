@@ -174,7 +174,7 @@ class _FlashDealListState extends State<FlashDealList> {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {
                   return FlashDealProducts(
                     flash_deal_id: flashDealResponse.flash_deals[index].id,
-                    flash_deal_name: flashDealResponse.flash_deals[index].title,
+                    flash_deal_name: flashDealResponse.flash_deals[index].details,
                   );
                 }));
               }
@@ -203,7 +203,7 @@ class _FlashDealListState extends State<FlashDealList> {
                 Padding(
                   padding: const EdgeInsets.only(bottom: 8.0),
                   child: Text(
-                    flashDealResponse.flash_deals[index].title,
+                    flashDealResponse.flash_deals[index].details,
                     maxLines: 1,
                     style: TextStyle(
                         color: MyTheme.dark_grey,

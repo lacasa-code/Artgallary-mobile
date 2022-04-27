@@ -1520,7 +1520,7 @@ class _ProductDetailsState extends State<ProductDetails> {
             child: Container(
               width: 75,
               child: Text(
-                choice_options[choice_options_index].title,
+                choice_options[choice_options_index].details,
                 style: TextStyle(color: Color.fromRGBO(153, 153, 153, 1)),
               ),
             ),

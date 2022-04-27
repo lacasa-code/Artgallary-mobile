@@ -389,7 +389,7 @@ class _RechargeWalletState extends State<RechargeWallet> {
                         Padding(
                           padding: EdgeInsets.only(left: 8.0),
                           child: Text(
-                            _paymentTypeList[index].title,
+                            _paymentTypeList[index].details,
                             textAlign: TextAlign.left,
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,

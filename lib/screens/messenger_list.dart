@@ -174,7 +174,7 @@ class _MessengerListState extends State<MessengerList> {
           return Chat(
             conversation_id: _list[index].id,
             messenger_name: _list[index].shop_name,
-            messenger_title: _list[index].title,
+            messenger_title: _list[index].details,
             messenger_image: _list[index].shop_logo,
           );
         }));
@@ -225,7 +225,7 @@ class _MessengerListState extends State<MessengerList> {
                             fontWeight: FontWeight.w600),
                       ),
                       Text(
-                        _list[index].title,
+                        _list[index].details,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                         maxLines: 1,
