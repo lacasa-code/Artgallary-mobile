@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/custom/intl_phone_input.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:active_ecommerce_flutter/addon_config.dart';
 import 'package:active_ecommerce_flutter/screens/password_otp.dart';
@@ -104,24 +106,30 @@ class _PasswordForgetState extends State<PasswordForget> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40.0, bottom: 15),
                     child: Container(
-                      width: 75,
-                      height: 75,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      // width: 75,
+                      // height: 75,
+                      // child: Image.asset(
+                      //     'assets/login_registration_form_logo.png'),
+                      child: SvgPicture.asset(
+                        "assets/svg/logoDarkMode.svg",
+                        height: ScreenUtil().setHeight(70),
+                        width: ScreenUtil().setWidth(70),
+                      ),
                     ),
                   ),
+                  SizedBox(height: ScreenUtil().setSp(70)),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
                       AppLocalizations.of(context).login_screen_forgot_password,
                       style: TextStyle(
-                          color: MyTheme.accent_color,
+                          color: MyTheme.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
                   Container(
-                    width: _screen_width * (3 / 4),
+                    width: _screen_width * 0.94,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -134,7 +142,8 @@ class _PasswordForgetState extends State<PasswordForget> {
                                 : AppLocalizations.of(context)
                                     .password_forget_screen_phone,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(16),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -236,6 +245,9 @@ class _PasswordForgetState extends State<PasswordForget> {
                               ],
                             ),
                           ),
+                        SizedBox(
+                          height: ScreenUtil().setSp(100),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(top: 40.0),
                           child: Container(
@@ -248,7 +260,7 @@ class _PasswordForgetState extends State<PasswordForget> {
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.accent_color,
+                              color: MyTheme.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
@@ -256,9 +268,9 @@ class _PasswordForgetState extends State<PasswordForget> {
                                 AppLocalizations.of(context)
                                     .otp_screen_btn_send_code,
                                 style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w600),
+                                    color: MyTheme.accent_color,
+                                    fontSize: ScreenUtil().setSp(15),
+                                    fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {
                                 onPressSendCode();

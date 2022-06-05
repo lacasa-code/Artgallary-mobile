@@ -93,24 +93,24 @@ class _AddressState extends State<Address> {
         if (address.set_default == 1) {
           _default_shipping_address = address.id;
         }
-        _addressControllerListForUpdate
-            .add(TextEditingController(text: address.deliveryStatus));
+        // _addressControllerListForUpdate
+        //     .add(TextEditingController(text: address.delivery_status ?? ''));
         _postalCodeControllerListForUpdate
-            .add(TextEditingController(text: address.postal_code));
+            .add(TextEditingController(text: address.postal_code ?? ''));
         _phoneControllerListForUpdate
-            .add(TextEditingController(text: address.phone));
+            .add(TextEditingController(text: address.phone ?? ''));
         _countryControllerListForUpdate
-            .add(TextEditingController(text: address.country_name));
+            .add(TextEditingController(text: address.country_name ?? ''));
         _stateControllerListForUpdate
-            .add(TextEditingController(text: address.state_name));
+            .add(TextEditingController(text: address.state_name ?? ''));
         _cityControllerListForUpdate
-            .add(TextEditingController(text: address.city_name));
-        _selected_country_list_for_update
-            .add(Country(id: address.country_id, name: address.country_name));
+            .add(TextEditingController(text: address.city_name ?? ''));
+        _selected_country_list_for_update.add(
+            Country(id: address.country_id, name: address.country_name ?? ''));
         _selected_state_list_for_update
-            .add(MyState(id: address.state_id, name: address.state_name));
+            .add(MyState(id: address.state_id, name: address.state_name ?? ''));
         _selected_city_list_for_update
-            .add(City(id: address.city_id, name: address.city_name));
+            .add(City(id: address.city_id, name: address.city_name ?? ''));
       });
 
       print("fetchShippingAddressList");
@@ -463,7 +463,7 @@ class _AddressState extends State<Address> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Helper.kMainBackgroundColor,
+        backgroundColor: MyTheme.accent_color,
         appBar: buildAppBar(context),
         bottomNavigationBar: buildBottomAppBar(context),
         body: RefreshIndicator(
@@ -1495,7 +1495,7 @@ class _AddressState extends State<Address> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -1503,11 +1503,11 @@ class _AddressState extends State<Address> {
         children: [
           Text(
             AppLocalizations.of(context).address_screen_addresses_of_user,
-            style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+            style: TextStyle(fontSize: 16, color: MyTheme.white),
           ),
           Text(
             "* ${AppLocalizations.of(context).address_screen_addresses_to_make_default}",
-            style: TextStyle(fontSize: 10, color: MyTheme.medium_grey),
+            style: TextStyle(fontSize: 10, color: MyTheme.light_grey),
           ),
         ],
       ),
@@ -1595,7 +1595,8 @@ class _AddressState extends State<Address> {
                         Container(
                           width: 175,
                           child: Text(
-                            _shippingAddressList[index].deliveryStatus,
+                            '  _shippingAddressList[index].deliveryStatus ??'
+                            '',
                             maxLines: 2,
                             style: TextStyle(
                                 color: MyTheme.dark_grey,

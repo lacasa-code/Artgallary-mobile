@@ -4,6 +4,9 @@ import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/screens/main.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/parser.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:package_info/package_info.dart';
 import 'dart:async';
 import 'package:flutter/services.dart';
@@ -47,10 +50,9 @@ class _SplashState extends State<Splash> {
   }
 
   Future<Widget> loadFromFuture() async {
-
     // <fetch data from server. ex. login>
 
-    return Future.value( Main());
+    return Future.value(Main());
   }
 
   @override
@@ -59,10 +61,8 @@ class _SplashState extends State<Splash> {
       //comment this
       seconds: 3,
 
-
       //comment this
       navigateAfterSeconds: Main(),
-
 
       //navigateAfterFuture: loadFromFuture(), //uncomment this
       title: Text(
@@ -79,10 +79,14 @@ class _SplashState extends State<Splash> {
           color: Colors.white,
         ),
       ),
-      image: Image.asset("assets/splash_screen_logo.png"),
+      image: SvgPicture.asset(
+        "assets/svg/logoDarkMode.svg",
+        height: ScreenUtil().setHeight(120),
+        width: ScreenUtil().setWidth(120),
+      ),
       backgroundImage:
           Image.asset("assets/splash_login_registration_background_image.png"),
-      backgroundColor: MyTheme.splash_screen_color,
+      backgroundColor: MyTheme.splashScreenColor,
       photoSize: 150.0,
       backgroundPhotoSize: 140.0,
     );
@@ -117,7 +121,7 @@ class CustomSplashScreen extends StatefulWidget {
   final Color loaderColor;
 
   /// Main image mainly used for logos and like that
-  final Image image;
+  final Widget image;
 
   final Image backgroundImage;
 
@@ -316,17 +320,17 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
                 ),
               ),
               Column(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CircleAvatar(
-                    backgroundColor: Colors.transparent,
-                    child: Hero(
-                      tag: "backgroundImageInSplash",
-                      child: Container(child: widget.backgroundImage),
-                    ),
-                    radius: widget.backgroundPhotoSize,
-                  ),
+                  // CircleAvatar(
+                  //   backgroundColor: Colors.transparent,
+                  //   child: Hero(
+                  //     tag: "backgroundImageInSplash",
+                  //     child: Container(child: widget.backgroundImage),
+                  //   ),
+                  //   radius: widget.backgroundPhotoSize,
+                  // ),
                   Padding(
                     padding: const EdgeInsets.only(top: 1.0),
                     child: Container(
@@ -346,11 +350,11 @@ class _CustomSplashScreenState extends State<CustomSplashScreen> {
                                 radius: widget.photoSize,
                               ),
                             ),
-                            widget.title,
-                            Padding(
-                              padding: const EdgeInsets.only(top: 10.0),
-                            ),
-                            widget.loadingText
+                            // widget.title,
+                            // Padding(
+                            //   padding: const EdgeInsets.only(top: 10.0),
+                            // ),
+                            // widget.loadingText
                           ],
                         )),
                   ),

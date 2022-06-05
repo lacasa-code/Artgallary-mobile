@@ -12,7 +12,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class ManageProfileScreen extends StatefulWidget {
   const ManageProfileScreen({
     Key key,
+    this.index = 0,
   }) : super(key: key);
+  final int index;
 
   @override
   _ManageProfileScreenState createState() => _ManageProfileScreenState();
@@ -38,7 +40,8 @@ class _ManageProfileScreenState extends State<ManageProfileScreen>
   TabController _controller;
   @override
   void initState() {
-    _controller = TabController(length: pages.length, vsync: this);
+    _controller = TabController(length: pages.length, vsync: this)
+      ..index = widget.index;
     super.initState();
   }
 

@@ -243,7 +243,7 @@ class _ChatState extends State<Chat> {
       toolbarHeight: 75,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
@@ -285,7 +285,7 @@ class _ChatState extends State<Chat> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 2,
                             style: TextStyle(
-                                color: MyTheme.font_grey,
+                                color: MyTheme.white,
                                 fontSize: 14,
                                 height: 1.6,
                                 fontWeight: FontWeight.w600),
@@ -296,7 +296,7 @@ class _ChatState extends State<Chat> {
                             overflow: TextOverflow.ellipsis,
                             maxLines: 1,
                             style: TextStyle(
-                              color: MyTheme.medium_grey,
+                              color: MyTheme.white,
                               fontSize: 12,
                               height: 1.6,
                             ),

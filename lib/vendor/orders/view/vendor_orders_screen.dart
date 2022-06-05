@@ -1,6 +1,8 @@
 import 'package:active_ecommerce_flutter/my_theme.dart';
+import 'package:active_ecommerce_flutter/vendor/orders/view/order_details_screen.dart';
 import 'package:active_ecommerce_flutter/vendor/orders/view/widgets/order_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:one_context/one_context.dart';
 
 class VendorOrdersScreen extends StatefulWidget {
   const VendorOrdersScreen({
@@ -27,7 +29,13 @@ class _VendorOrdersScreenState extends State<VendorOrdersScreen> {
           children: List.generate(
             10,
             (index) => OrderWidget(
-              onPressed: () {},
+              onPressed: () {
+                OneContext.instance.navigator.push(
+                  MaterialPageRoute(
+                    builder: (_) => OrderDetailsScreen(),
+                  ),
+                );
+              },
               deliveryStatus: 'Pending',
               amount: 'SR32.00',
               customerName: 'user_name',

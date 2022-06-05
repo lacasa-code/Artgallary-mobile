@@ -3,6 +3,7 @@ import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:active_ecommerce_flutter/app_config.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:toast/toast.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/repositories/profile_repository.dart';
@@ -184,13 +185,13 @@ class _ProfileEditState extends State<ProfileEdit> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       title: Text(
         AppLocalizations.of(context).profile_edit_screen_edit_profile,
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,
@@ -276,7 +277,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     padding: EdgeInsets.all(0),
                     child: Icon(
                       Icons.edit,
-                      color: MyTheme.font_grey,
+                      color: MyTheme.accent_color,
                       size: 14,
                     ),
                     shape: CircleBorder(
@@ -311,9 +312,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                 AppLocalizations.of(context)
                     .profile_edit_screen_basic_information,
                 style: TextStyle(
-                    color: MyTheme.grey_153,
+                    color: MyTheme.white,
                     fontWeight: FontWeight.w600,
-                    fontSize: 14.0),
+                    fontSize: ScreenUtil().setSp(14.0)),
               ),
             ),
             Padding(
@@ -321,7 +322,9 @@ class _ProfileEditState extends State<ProfileEdit> {
               child: Text(
                 AppLocalizations.of(context).profile_edit_screen_name,
                 style: TextStyle(
-                    color: MyTheme.accent_color, fontWeight: FontWeight.w600),
+                    color: MyTheme.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: ScreenUtil().setSp(13)),
               ),
             ),
             Padding(
@@ -345,7 +348,9 @@ class _ProfileEditState extends State<ProfileEdit> {
               child: Text(
                 AppLocalizations.of(context).profile_edit_screen_password,
                 style: TextStyle(
-                    color: MyTheme.accent_color, fontWeight: FontWeight.w600),
+                    color: MyTheme.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: ScreenUtil().setSp(13)),
               ),
             ),
             Padding(
@@ -373,7 +378,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     AppLocalizations.of(context)
                         .profile_edit_screen_password_length_recommendation,
                     style: TextStyle(
-                        color: MyTheme.font_grey, fontStyle: FontStyle.italic),
+                        color: MyTheme.white, fontStyle: FontStyle.italic),
                   )
                 ],
               ),
@@ -384,7 +389,9 @@ class _ProfileEditState extends State<ProfileEdit> {
                 AppLocalizations.of(context)
                     .profile_edit_screen_retype_password,
                 style: TextStyle(
-                    color: MyTheme.accent_color, fontWeight: FontWeight.w600),
+                    color: MyTheme.white,
+                    fontWeight: FontWeight.w600,
+                    fontSize: ScreenUtil().setSp(13)),
               ),
             ),
             Padding(
@@ -422,7 +429,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                     child: FlatButton(
                       minWidth: MediaQuery.of(context).size.width,
                       //height: 50,
-                      color: MyTheme.accent_color,
+                      color: MyTheme.white,
                       shape: RoundedRectangleBorder(
                           borderRadius:
                               const BorderRadius.all(Radius.circular(8.0))),
@@ -431,7 +438,7 @@ class _ProfileEditState extends State<ProfileEdit> {
                           AppLocalizations.of(context)
                               .profile_edit_screen_btn_update_profile,
                           style: TextStyle(
-                              color: Colors.white,
+                              color: MyTheme.accent_color,
                               fontSize: 14,
                               fontWeight: FontWeight.w600),
                         ),

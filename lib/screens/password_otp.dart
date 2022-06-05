@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toast/toast.dart';
 import 'package:active_ecommerce_flutter/repositories/auth_repository.dart';
 import 'package:active_ecommerce_flutter/screens/login.dart';
@@ -139,11 +141,19 @@ class _PasswordOtpState extends State<PasswordOtp> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40.0, bottom: 15),
                     child: Container(
-                      width: 75,
-                      height: 75,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      // width: 75,
+                      // height: 75,
+                      // child: Image.asset(
+                      //     'assets/login_registration_form_logo.png'),
+                      child: SvgPicture.asset(
+                        "assets/svg/logoDarkMode.svg",
+                        height: ScreenUtil().setHeight(70),
+                        width: ScreenUtil().setWidth(70),
+                      ),
                     ),
+                  ),
+                  SizedBox(
+                    height: ScreenUtil().setHeight(60),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
@@ -151,7 +161,7 @@ class _PasswordOtpState extends State<PasswordOtp> {
                       AppLocalizations.of(context)
                           .password_otp_screen_enter_the_code_sent,
                       style: TextStyle(
-                          color: MyTheme.accent_color,
+                          color: MyTheme.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
@@ -166,7 +176,7 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                     .password_otp_screen_enter_verification_code_to_email,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: MyTheme.dark_grey, fontSize: 14))
+                                    color: MyTheme.white, fontSize: 14))
                             : Text(
                                 AppLocalizations.of(context)
                                     .password_otp_screen_enter_verification_code_to_phone,
@@ -206,7 +216,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                             AppLocalizations.of(context)
                                 .password_otp_screen_password,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(14),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -225,6 +236,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                   autocorrect: false,
                                   decoration:
                                       InputDecorations.buildInputDecoration_1(
+                                          filled: true,
+                                          fillColor: Colors.white,
                                           hintText: "• • • • • • • •"),
                                 ),
                               ),
@@ -232,7 +245,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                 AppLocalizations.of(context)
                                     .password_otp_screen_password_length_recommendation,
                                 style: TextStyle(
-                                    color: MyTheme.textfield_grey,
+                                    color: MyTheme.white,
+                                    fontSize: ScreenUtil().setSp(11),
                                     fontStyle: FontStyle.italic),
                               )
                             ],
@@ -244,7 +258,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                             AppLocalizations.of(context)
                                 .password_otp_screen_retype_password,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(14),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -260,6 +275,8 @@ class _PasswordOtpState extends State<PasswordOtp> {
                               autocorrect: false,
                               decoration:
                                   InputDecorations.buildInputDecoration_1(
+                                      fillColor: Colors.white,
+                                      filled: true,
                                       hintText: "• • • • • • • •"),
                             ),
                           ),
@@ -276,7 +293,7 @@ class _PasswordOtpState extends State<PasswordOtp> {
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.accent_color,
+                              color: MyTheme.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
@@ -284,7 +301,7 @@ class _PasswordOtpState extends State<PasswordOtp> {
                                 AppLocalizations.of(context)
                                     .common_confirm_ucfirst,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: MyTheme.accent_color,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600),
                               ),

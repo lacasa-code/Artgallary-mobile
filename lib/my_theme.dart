@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 
 class MyTheme {
   /*configurable colors stars*/
-  static Color accent_color = Color.fromRGBO(192, 131, 113, 1);
+  static Color accent_color = Color(0xff1D4C58);
+  // static Color accent_color = Color.fromRGBO(192, 131, 113, 1);
   static Color soft_accent_color = Color.fromRGBO(196, 165, 156, 1);
-  static Color splash_screen_color = Color.fromRGBO(
-      68, 25, 12, 1); // if not sure , use the same color as accent color
+  static Color splashScreenColor =
+      Color(0xff1D4C58); // if not sure , use the same color as accent color
   /*configurable colors ends*/
 
   /*If you are not a developer, do not change the bottom colors*/
@@ -20,7 +21,7 @@ class MyTheme {
   static Color golden = Color.fromRGBO(68, 25, 12, 1);
   static Color shimmer_base = Colors.grey.shade50;
   static Color shimmer_highlighted = Colors.grey.shade200;
-  static const kMainBackgroundColor = Color(0xffF7F5E8);
+  static const kMainBackgroundColor = Color(0xff1D4C58);
 
   //testing shimmer
   /*static Color shimmer_base = Colors.redAccent;

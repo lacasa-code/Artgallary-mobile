@@ -12,6 +12,7 @@ import 'dart:ui';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Main extends StatefulWidget {
@@ -72,27 +73,23 @@ class _MainState extends State<Main> {
             visible: MediaQuery.of(context).viewInsets.bottom ==
                 0.0, // if the kyeboard is open then hide, else show
             child: FloatingActionButton(
-              backgroundColor: MyTheme.splash_screen_color,
-              onPressed: () {},
+              backgroundColor: MyTheme.splashScreenColor,
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Filter(
+                    selected_filter: "sellers",
+                  );
+                }));
+              },
               tooltip: "start FAB",
               child: Container(
-                  margin: EdgeInsets.all(0.0),
-                  child: IconButton(
-                      icon: Image.asset(
-                        'assets/app_logo.jpg',
-                        height: 50,
-                        width: 50,
-                        fit: BoxFit.cover,
-                      ),
-                      tooltip: 'Action',
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return Filter(
-                            selected_filter: "sellers",
-                          );
-                        }));
-                      })),
+                  // margin: EdgeInsets.all(0.0),
+                  child: SvgPicture.asset(
+                'assets/svg/logoDarkMode.svg',
+                height: ScreenUtil().setHeight(70),
+                width: ScreenUtil().setHeight(70),
+                fit: BoxFit.cover,
+              )),
               elevation: 0.0,
             ),
           ),
@@ -115,22 +112,21 @@ class _MainState extends State<Main> {
                   unselectedItemColor: Color.fromRGBO(153, 153, 153, 1),
                   items: [
                     BottomNavigationBarItem(
-                        icon: Image.asset(
-                          "assets/home.png",
+                        icon: SvgPicture.asset(
+                          "assets/svg/home.svg",
                           color: _currentIndex == 0
                               ? Theme.of(context).accentColor
                               : Color.fromRGBO(153, 153, 153, 1),
-                          height: 20,
+                          // height: 20,
                         ),
                         label: AppLocalizations.of(context)
                             .main_screen_bottom_navigation_home),
                     BottomNavigationBarItem(
-                        icon: Image.asset(
-                          "assets/categories.png",
+                        icon: SvgPicture.asset(
+                          "assets/svg/category.svg",
                           color: _currentIndex == 1
                               ? Theme.of(context).accentColor
                               : Color.fromRGBO(153, 153, 153, 1),
-                          height: 20,
                         ),
                         label: AppLocalizations.of(context)
                             .main_screen_bottom_navigation_categories),
@@ -142,7 +138,7 @@ class _MainState extends State<Main> {
                         label: ''),
                     BottomNavigationBarItem(
                         icon: SvgPicture.asset(
-                          'assets/svg/Buy.svg',
+                          'assets/svg/cart.svg',
                           color: _currentIndex == 3
                               ? Theme.of(context).accentColor
                               : Color.fromRGBO(153, 153, 153, 1),
@@ -151,12 +147,11 @@ class _MainState extends State<Main> {
                         label: AppLocalizations.of(context)
                             .main_screen_bottom_navigation_cart),
                     BottomNavigationBarItem(
-                      icon: Image.asset(
-                        "assets/profile.png",
+                      icon: SvgPicture.asset(
+                        "assets/svg/Profile.svg",
                         color: _currentIndex == 4
                             ? Theme.of(context).accentColor
                             : Color.fromRGBO(153, 153, 153, 1),
-                        height: 20,
                       ),
                       label: AppLocalizations.of(context)
                           .main_screen_bottom_navigation_profile,

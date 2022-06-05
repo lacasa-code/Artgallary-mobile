@@ -78,10 +78,9 @@ class _CategoryListState extends State<CategoryList> {
                   padding: const EdgeInsets.symmetric(
                       vertical: 18.0, horizontal: 0.0),
                   child: Container(
-                    child: Image.asset(
-                      'assets/hamburger.png',
-                      height: 16,
-                      color: MyTheme.dark_grey,
+                    child: const Icon(
+                      Icons.filter_list,
+                      color: Colors.white,
                     ),
                   ),
                 ),
@@ -89,13 +88,13 @@ class _CategoryListState extends State<CategoryList> {
             )
           : Builder(
               builder: (context) => IconButton(
-                icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+                icon: Icon(Icons.arrow_back, color: MyTheme.white),
                 onPressed: () => Navigator.of(context).pop(),
               ),
             ),
       title: Text(
         getAppBarTitle(),
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,

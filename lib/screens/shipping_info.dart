@@ -222,13 +222,13 @@ class _ShippingInfoState extends State<ShippingInfo> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       title: Text(
         "${AppLocalizations.of(context).shipping_info_screen_shipping_cost} ${_shipping_cost_string}",
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,
@@ -315,7 +315,7 @@ class _ShippingInfoState extends State<ShippingInfo> {
                     Container(
                       width: 175,
                       child: Text(
-                        _shippingAddressList[index].deliveryStatus,
+                        _shippingAddressList[index].address ?? '',
                         maxLines: 2,
                         style: TextStyle(
                             color: MyTheme.dark_grey,

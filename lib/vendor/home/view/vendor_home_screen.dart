@@ -4,6 +4,7 @@ import 'package:active_ecommerce_flutter/vendor/home/view/widgets/settings_card.
 import 'package:active_ecommerce_flutter/vendor/home/view/widgets/statistics_view.dart';
 import 'package:active_ecommerce_flutter/vendor/home/view/widgets/total_view.dart';
 import 'package:active_ecommerce_flutter/vendor/home/view/widgets/verfication_card.dart';
+import 'package:active_ecommerce_flutter/vendor/profile/view/manage_profile_screen.dart';
 import 'package:active_ecommerce_flutter/vendor/shop/view/shop_settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:one_context/one_context.dart';
@@ -43,7 +44,15 @@ class _VendorHomeScreenState extends State<VendorHomeScreen> {
               title: 'Payment',
               subTitle: 'Configure your payment method',
               buttonText: 'Configure Now',
-              onPressed: () {},
+              onPressed: () {
+                OneContext.instance.navigator.push(
+                  MaterialPageRoute(
+                    builder: (_) => ManageProfileScreen(
+                      index: 1,
+                    ),
+                  ),
+                );
+              },
             ),
           ],
         ),

@@ -671,8 +671,10 @@ class _CheckoutState extends State<Checkout> {
                           height: 40,
                           width: double.infinity,
                           decoration: BoxDecoration(
+                              border:
+                                  Border.all(width: 0.5, color: Colors.white),
                               borderRadius: BorderRadius.circular(8.0),
-                              color: MyTheme.soft_accent_color),
+                              color: MyTheme.accent_color.withOpacity(0.8)),
                           child: Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Row(
@@ -683,7 +685,9 @@ class _CheckoutState extends State<Checkout> {
                                     AppLocalizations.of(context)
                                         .checkout_screen_total_amount,
                                     style: TextStyle(
-                                        color: MyTheme.font_grey, fontSize: 14),
+                                      color: MyTheme.white,
+                                      fontSize: 14,
+                                    ),
                                   ),
                                 ),
                                 Padding(
@@ -696,7 +700,7 @@ class _CheckoutState extends State<Checkout> {
                                       AppLocalizations.of(context)
                                           .common_see_details,
                                       style: TextStyle(
-                                        color: MyTheme.font_grey,
+                                        color: MyTheme.white,
                                         fontSize: 12,
                                         decoration: TextDecoration.underline,
                                       ),
@@ -708,14 +712,14 @@ class _CheckoutState extends State<Checkout> {
                                   padding: const EdgeInsets.only(right: 16.0),
                                   child: Text(_totalString,
                                       style: TextStyle(
-                                          color: MyTheme.accent_color,
+                                          color: MyTheme.white,
                                           fontSize: 14,
                                           fontWeight: FontWeight.w600)),
                                 ),
                               ],
                             ),
                           ),
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -769,7 +773,7 @@ class _CheckoutState extends State<Checkout> {
                 child: FlatButton(
                   minWidth: MediaQuery.of(context).size.width,
                   //height: 50,
-                  color: MyTheme.accent_color,
+                  color: MyTheme.white,
                   shape: RoundedRectangleBorder(
                       borderRadius: const BorderRadius.only(
                     topRight: const Radius.circular(8.0),
@@ -778,7 +782,7 @@ class _CheckoutState extends State<Checkout> {
                   child: Text(
                     AppLocalizations.of(context).checkout_screen_apply_coupon,
                     style: TextStyle(
-                        color: Colors.white,
+                        color: MyTheme.accent_color,
                         fontSize: 13,
                         fontWeight: FontWeight.w600),
                   ),
@@ -811,7 +815,7 @@ class _CheckoutState extends State<Checkout> {
                   },
                 ),
               )
-      ],
+      ].reversed.toList(),
     );
   }
 
@@ -821,13 +825,13 @@ class _CheckoutState extends State<Checkout> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),
       title: Text(
         AppLocalizations.of(context).checkout_screen_checkout,
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,

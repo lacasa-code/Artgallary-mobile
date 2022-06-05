@@ -126,7 +126,7 @@ class _ProfileState extends State<Profile> {
     return Directionality(
       textDirection: app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
       child: Scaffold(
-        backgroundColor: Helper.kMainBackgroundColor,
+        backgroundColor: MyTheme.accent_color,
         key: _scaffoldKey,
         drawer: MainDrawer(),
         appBar: buildAppBar(context),
@@ -213,7 +213,7 @@ class _ProfileState extends State<Profile> {
                   AppLocalizations.of(context).profile_screen_orders,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: MyTheme.font_grey, fontWeight: FontWeight.w300),
+                      color: MyTheme.white, fontWeight: FontWeight.w300),
                 ),
               )
             ],
@@ -249,7 +249,7 @@ class _ProfileState extends State<Profile> {
                   AppLocalizations.of(context).profile_screen_profile,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: MyTheme.font_grey, fontWeight: FontWeight.w300),
+                      color: MyTheme.white, fontWeight: FontWeight.w300),
                 ),
               )
             ],
@@ -283,7 +283,7 @@ class _ProfileState extends State<Profile> {
                   AppLocalizations.of(context).profile_screen_address,
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                      color: MyTheme.font_grey, fontWeight: FontWeight.w300),
+                      color: MyTheme.white, fontWeight: FontWeight.w300),
                 ),
               )
             ],
@@ -362,8 +362,7 @@ class _ProfileState extends State<Profile> {
                         AppLocalizations.of(context)
                             .profile_screen_notification,
                         textAlign: TextAlign.center,
-                        style:
-                            TextStyle(color: MyTheme.font_grey, fontSize: 14),
+                        style: TextStyle(color: MyTheme.white, fontSize: 14),
                       ),
                     )
                   ],
@@ -401,7 +400,7 @@ class _ProfileState extends State<Profile> {
                       AppLocalizations.of(context)
                           .profile_screen_purchase_history,
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: MyTheme.font_grey, fontSize: 14),
+                      style: TextStyle(color: MyTheme.white, fontSize: 14),
                     ),
                   )
                 ],
@@ -440,15 +439,15 @@ class _ProfileState extends State<Profile> {
                             AppLocalizations.of(context)
                                 .profile_screen_earning_points,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: MyTheme.font_grey, fontSize: 14),
+                            style:
+                                TextStyle(color: MyTheme.white, fontSize: 14),
                           ),
                         )
                       ],
                     ),
                   ),
                 )
-              : Container(),
+              : const SizedBox(),
           AddonConfig.refund_addon_installed
               ? InkWell(
                   onTap: () {
@@ -481,8 +480,8 @@ class _ProfileState extends State<Profile> {
                             AppLocalizations.of(context)
                                 .profile_screen_refund_requests,
                             textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: MyTheme.font_grey, fontSize: 14),
+                            style:
+                                TextStyle(color: MyTheme.white, fontSize: 14),
                           ),
                         )
                       ],
@@ -507,7 +506,7 @@ class _ProfileState extends State<Profile> {
                 _cartCounterString,
                 style: TextStyle(
                     fontSize: 16,
-                    color: MyTheme.font_grey,
+                    color: MyTheme.white,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -529,7 +528,7 @@ class _ProfileState extends State<Profile> {
                 _wishlistCounterString,
                 style: TextStyle(
                     fontSize: 16,
-                    color: MyTheme.font_grey,
+                    color: MyTheme.white,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -551,7 +550,7 @@ class _ProfileState extends State<Profile> {
                 _orderCounterString,
                 style: TextStyle(
                     fontSize: 16,
-                    color: MyTheme.font_grey,
+                    color: MyTheme.white,
                     fontWeight: FontWeight.w600),
               ),
             ),
@@ -603,7 +602,7 @@ class _ProfileState extends State<Profile> {
             "${user_name.$}",
             style: TextStyle(
                 fontSize: 14,
-                color: MyTheme.font_grey,
+                color: MyTheme.white,
                 fontWeight: FontWeight.w600),
           ),
         ),
@@ -627,7 +626,7 @@ class _ProfileState extends State<Profile> {
           child: Container(
             height: 24,
             child: FlatButton(
-              color: Colors.green,
+              color: MyTheme.white,
               // 	rgb(50,205,50)
               shape: RoundedRectangleBorder(
                   borderRadius: const BorderRadius.only(
@@ -639,7 +638,7 @@ class _ProfileState extends State<Profile> {
               child: Text(
                 AppLocalizations.of(context).profile_screen_check_balance,
                 style: TextStyle(
-                    color: Colors.white,
+                    color: MyTheme.accent_color,
                     fontSize: 11,
                     fontWeight: FontWeight.w600),
               ),
@@ -663,7 +662,7 @@ class _ProfileState extends State<Profile> {
         child: widget.show_back_button
             ? Builder(
                 builder: (context) => IconButton(
-                  icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+                  icon: Icon(Icons.arrow_back, color: MyTheme.white),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               )
@@ -672,23 +671,16 @@ class _ProfileState extends State<Profile> {
                   onTap: () {
                     _scaffoldKey.currentState.openDrawer();
                   },
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 18.0, horizontal: 0.0),
-                    child: Container(
-                      child: Image.asset(
-                        'assets/hamburger.png',
-                        height: 16,
-                        color: MyTheme.dark_grey,
-                      ),
-                    ),
+                  child: Icon(
+                    Icons.filter_list,
+                    color: Colors.white,
                   ),
                 ),
               ),
       ),
       title: Text(
         AppLocalizations.of(context).profile_screen_account,
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,

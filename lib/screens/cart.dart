@@ -263,7 +263,7 @@ class _CartState extends State<Cart> {
       child: Scaffold(
           key: _scaffoldKey,
           drawer: MainDrawer(),
-          backgroundColor: Helper.kMainBackgroundColor,
+          backgroundColor: MyTheme.accent_color,
           appBar: buildAppBar(context),
           body: Stack(
             children: [
@@ -320,7 +320,8 @@ class _CartState extends State<Cart> {
               width: double.infinity,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.0),
-                  color: MyTheme.soft_accent_color),
+                  border: Border.all(color: Colors.white),
+                  color: MyTheme.accent_color),
               child: Padding(
                 padding: const EdgeInsets.all(4.0),
                 child: Row(
@@ -329,8 +330,7 @@ class _CartState extends State<Cart> {
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text(
                         AppLocalizations.of(context).cart_screen_total_amount,
-                        style:
-                            TextStyle(color: MyTheme.font_grey, fontSize: 14),
+                        style: TextStyle(color: MyTheme.white, fontSize: 14),
                       ),
                     ),
                     Spacer(),
@@ -338,7 +338,7 @@ class _CartState extends State<Cart> {
                       padding: const EdgeInsets.symmetric(horizontal: 16.0),
                       child: Text("$_cartTotalString",
                           style: TextStyle(
-                              color: MyTheme.accent_color,
+                              color: MyTheme.white,
                               fontSize: 14,
                               fontWeight: FontWeight.w600)),
                     ),
@@ -392,7 +392,7 @@ class _CartState extends State<Cart> {
                       child: Text(
                         AppLocalizations.of(context).cart_screen_update_cart,
                         style: TextStyle(
-                            color: MyTheme.medium_grey,
+                            color: MyTheme.accent_color,
                             fontSize: 13,
                             fontWeight: FontWeight.w600),
                       ),
@@ -478,18 +478,16 @@ class _CartState extends State<Cart> {
             padding:
                 const EdgeInsets.symmetric(vertical: 18.0, horizontal: 0.0),
             child: Container(
-              child: Image.asset(
-                'assets/hamburger.png',
-                height: 16,
-                color: MyTheme.dark_grey,
-              ),
-            ),
+                child: const Icon(
+              Icons.filter_list,
+              color: Colors.white,
+            )),
           ),
         ),
       ),
       title: Text(
         AppLocalizations.of(context).cart_screen_shopping_cart,
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,

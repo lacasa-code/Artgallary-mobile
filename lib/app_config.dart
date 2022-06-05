@@ -3,9 +3,11 @@ import 'package:flutter/material.dart';
 var this_year = DateTime.now().year.toString();
 
 class AppConfig {
-  static String copyright_text = "@ArtGallery " + this_year; //this shows in the splash screen
-  static String app_name = "Art Gallery"; //this shows in the splash screen
-  static String purchase_code = "9c5cebe7-94ec-4423-a5b5-33f4a36440ab"; //enter your purchase code for the app from codecanyon
+  static String copyright_text =
+      "@ArtGallery " + this_year; //this shows in the splash screen
+  static String app_name = "Oryx 44"; //this shows in the splash screen
+  static String purchase_code =
+      "9c5cebe7-94ec-4423-a5b5-33f4a36440ab"; //enter your purchase code for the app from codecanyon
   //static String purchase_code = ""; //enter your purchase code for the app from codecanyon
 
   //configure this

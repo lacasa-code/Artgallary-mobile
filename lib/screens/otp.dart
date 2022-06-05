@@ -5,6 +5,8 @@ import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/screens/login.dart';
 import 'package:active_ecommerce_flutter/repositories/auth_repository.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:toast/toast.dart';
 import 'package:active_ecommerce_flutter/helpers/shared_value_helper.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -105,9 +107,15 @@ class _OtpState extends State<Otp> {
                     child: Container(
                       width: 75,
                       height: 75,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      child: SvgPicture.asset(
+                        "assets/svg/logoDarkMode.svg",
+                        height: ScreenUtil().setHeight(70),
+                        width: ScreenUtil().setWidth(70),
+                      ),
                     ),
+                  ),
+                  SizedBox(
+                    height: ScreenUtil().setHeight(70),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
@@ -119,7 +127,7 @@ class _OtpState extends State<Otp> {
                               : AppLocalizations.of(context)
                                   .otp_screen_phone_number),
                       style: TextStyle(
-                          color: MyTheme.accent_color,
+                          color: MyTheme.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
@@ -134,16 +142,16 @@ class _OtpState extends State<Otp> {
                                     .otp_screen_enter_verification_code_to_email,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: MyTheme.dark_grey, fontSize: 14))
+                                    color: MyTheme.white, fontSize: 14))
                             : Text(
                                 AppLocalizations.of(context)
                                     .otp_screen_enter_verification_code_to_phone,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    color: MyTheme.dark_grey, fontSize: 14))),
+                                    color: MyTheme.white, fontSize: 14))),
                   ),
                   Container(
-                    width: _screen_width * (3 / 4),
+                    width: _screen_width * 0.94,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -168,6 +176,9 @@ class _OtpState extends State<Otp> {
                             ],
                           ),
                         ),
+                        SizedBox(
+                          height: ScreenUtil().setHeight(160),
+                        ),
                         Padding(
                           padding: const EdgeInsets.only(top: 40.0),
                           child: Container(
@@ -180,16 +191,16 @@ class _OtpState extends State<Otp> {
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.accent_color,
+                              color: MyTheme.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
                               child: Text(
                                 AppLocalizations.of(context).otp_screen_confirm,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: MyTheme.accent_color,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {
                                 onPressConfirm();

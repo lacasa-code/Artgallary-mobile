@@ -1,6 +1,7 @@
 import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/screens/address.dart';
 import 'package:active_ecommerce_flutter/screens/wishlist.dart';
+import 'package:active_ecommerce_flutter/vendor/commissions/view/commissions_screen.dart';
 import 'package:active_ecommerce_flutter/vendor/coupon/view/vendor_coupon_screen.dart';
 import 'package:active_ecommerce_flutter/vendor/home/view/widgets/page_profile_header_item.dart';
 import 'package:active_ecommerce_flutter/vendor/orders/view/vendor_orders_screen.dart';
@@ -183,7 +184,13 @@ class _VendorSettingsScreenState extends State<VendorSettingsScreen> {
                       SettingsMenuItem(
                         title: 'Commission History',
                         icons: Icons.list_alt,
-                        onTap: () {},
+                        onTap: () {
+                          OneContext.instance.navigator.push(
+                            MaterialPageRoute(
+                              builder: (_) => CommissionsScreen(),
+                            ),
+                          );
+                        },
                       ),
                       SettingsMenuItem(
                         title: 'Conversations',

@@ -1,3 +1,4 @@
+import 'package:active_ecommerce_flutter/screens/main.dart';
 import 'package:active_ecommerce_flutter/vendor/tab/viewModel/tab_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -57,6 +58,8 @@ class _MyAppState extends State<MyApp> {
               primaryColor: MyTheme.white,
               visualDensity: VisualDensity.adaptivePlatformDensity,
               accentColor: MyTheme.accent_color,
+              
+              // colorScheme: ColorScheme.fromSeed(seedColor:MyTheme.accent_color,),
 
               /*textTheme: TextTheme(
               bodyText1: TextStyle(),
@@ -79,13 +82,13 @@ class _MyAppState extends State<MyApp> {
             ],
             locale: provider.locale,
             supportedLocales: LangConfig().supportedLocales(),
-            // home: Splash(),
-            home: ChangeNotifierProvider<TabProvider>(
-              create: (_) => TabProvider(),
-              child: TabScreen(),
-            ),
+            home: Splash(),
+            // home: ChangeNotifierProvider<TabProvider>(
+            //   create: (_) => TabProvider(),
+            //   child: TabScreen(),
+            // ),
 
-            //home: Main(),
+            // home: Main(),
           );
         }));
   }

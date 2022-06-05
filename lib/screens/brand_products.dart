@@ -112,7 +112,7 @@ class _BrandProductsState extends State<BrandProducts> {
       backgroundColor: Colors.transparent,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () => Navigator.of(context).pop(),
         ),
       ),

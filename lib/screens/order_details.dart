@@ -1097,7 +1097,7 @@ class _OrderDetailsState extends State<OrderDetails> {
                               )
                             : Container(),
                         Text(
-                          "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.shipping_address.deliveryStatus}",
+                          "${AppLocalizations.of(context).order_details_screen_address}: ${_orderDetails.shipping_address}",
                           maxLines: 3,
                           style: TextStyle(
                             color: MyTheme.grey_153,
@@ -1319,7 +1319,7 @@ class _OrderDetailsState extends State<OrderDetails> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-            icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+            icon: Icon(Icons.arrow_back, color: MyTheme.white),
             onPressed: () {
               if (widget.from_notification || widget.go_back == false) {
                 Navigator.push(context, MaterialPageRoute(builder: (context) {

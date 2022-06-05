@@ -360,6 +360,13 @@ class _OrderListState extends State<OrderList> {
           centerTitle: false,
           backgroundColor: Colors.transparent,
           automaticallyImplyLeading: false,
+          // leading: IconButton(
+          //   icon: Icon(Icons.arrow_back),
+          //   color: Colors.white,
+          //   onPressed: () {
+          //     OneContext().pop();
+          //   },
+          // ),
           actions: [
             new Container(),
           ],
@@ -389,7 +396,7 @@ class _OrderListState extends State<OrderList> {
         children: [
           Builder(
             builder: (context) => IconButton(
-              icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+              icon: Icon(Icons.arrow_back, color: MyTheme.white),
               onPressed: () {
                 if (widget.from_checkout) {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {

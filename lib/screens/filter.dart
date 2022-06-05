@@ -391,7 +391,8 @@ class _FilterState extends State<Filter> {
         key: _scaffoldKey,
         backgroundColor: MyTheme.kMainBackgroundColor,
         body: Stack(
-          overflow: Overflow.visible,
+          clipBehavior: Clip.none,
+          // overflow: Overflow.visible,
           children: [
             _selectedFilter.option_key == 'product'
                 ? buildProductList()

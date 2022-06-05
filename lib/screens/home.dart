@@ -15,6 +15,8 @@ import 'package:active_ecommerce_flutter/repositories/sliders_repository.dart';
 import 'package:active_ecommerce_flutter/repositories/category_repository.dart';
 import 'package:active_ecommerce_flutter/repositories/product_repository.dart';
 import 'package:active_ecommerce_flutter/app_config.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:active_ecommerce_flutter/custom/toast_component.dart';
@@ -117,7 +119,6 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
     var productResponse = await ProductRepository().getFeaturedProducts(
       page: _productPage,
     );
-  
 
     _featuredProductList.addAll(productResponse.products);
     _isProductInitial = false;
@@ -298,6 +299,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                       .home_screen_featured_categories,
                                   style: TextStyle(
                                     fontSize: 16,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -334,7 +336,10 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                                 Text(
                                   AppLocalizations.of(context)
                                       .home_screen_featured_products,
-                                  style: TextStyle(fontSize: 16),
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.white,
+                                  ),
                                 ),
                               ],
                             ),
@@ -395,14 +400,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         itemBuilder: (context, index) {
           // 3
           return ProductCard(
-              id: _featuredProductList[index].id,
-              image: _featuredProductList[index].thumbnail_image,
-              name: _featuredProductList[index].name,
-              main_price: _featuredProductList[index].main_price,
-              stroked_price: _featuredProductList[index].stroked_price,
-              has_discount: _featuredProductList[index].has_discount,
-              // isFav: _featuredProductList[index].,
-              );
+            id: _featuredProductList[index].id,
+            image: _featuredProductList[index].thumbnail_image,
+            name: _featuredProductList[index].name,
+            main_price: _featuredProductList[index].main_price,
+            stroked_price: _featuredProductList[index].stroked_price,
+            has_discount: _featuredProductList[index].has_discount,
+            // isFav: _featuredProductList[index].,
+          );
         },
       );
     } else if (_totalProductData == 0) {
@@ -517,181 +522,197 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        GestureDetector(
-          onTap: () {
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //       return CategoryList(
+        //         is_top_category: true,
+        //       );
+        //     }));
+        //   },
+        //   child: Container(
+        //     height: 100,
+        //     width: MediaQuery.of(context).size.width / 5 - 4,
+        //     child: Column(
+        //       children: [
+        //         Container(
+        //             height: 57,
+        //             width: 57,
+        //             decoration: BoxDecoration(
+        //                 shape: BoxShape.circle,
+        //                 border:
+        //                     Border.all(color: MyTheme.light_grey, width: 1)),
+        //             child: Padding(
+        //               padding: const EdgeInsets.all(16.0),
+        //               child: Image.asset("assets/top_categories.png"),
+        //             )),
+        //         Padding(
+        //           padding: const EdgeInsets.only(top: 8),
+        //           child: Text(
+        //             AppLocalizations.of(context).home_screen_top_categories,
+        //             textAlign: TextAlign.center,
+        //             style: TextStyle(
+        //                 color: Color.fromRGBO(132, 132, 132, 1),
+        //                 fontWeight: FontWeight.w300),
+        //           ),
+        //         )
+        //       ],
+        //     ),
+        //   ),
+        // ),
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //       return Filter(
+        //         selected_filter: "brands",
+        //       );
+        //     }));
+        //   },
+        //   child: Container(
+        //     height: 100,
+        //     width: MediaQuery.of(context).size.width / 5 - 4,
+        //     child: Column(
+        //       children: [
+        //         Container(
+        //             height: 57,
+        //             width: 57,
+        //             decoration: BoxDecoration(
+        //                 shape: BoxShape.circle,
+        //                 border:
+        //                     Border.all(color: MyTheme.light_grey, width: 1)),
+        //             child: Padding(
+        //               padding: const EdgeInsets.all(16.0),
+        //               child: Image.asset("assets/brands.png"),
+        //             )),
+        //         Padding(
+        //             padding: const EdgeInsets.only(top: 8),
+        //             child: Text(AppLocalizations.of(context).home_screen_brands,
+        //                 textAlign: TextAlign.center,
+        //                 style: TextStyle(
+        //                     color: Color.fromRGBO(132, 132, 132, 1),
+        //                     fontWeight: FontWeight.w300))),
+        //       ],
+        //     ),
+        //   ),
+        // ),
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //       return TopSellingProducts();
+        //     }));
+        //   },
+        //   child: Container(
+        //     height: 100,
+        //     width: MediaQuery.of(context).size.width / 5 - 4,
+        //     child: Column(
+        //       children: [
+        //         Container(
+        //             height: 57,
+        //             width: 57,
+        //             decoration: BoxDecoration(
+        //                 shape: BoxShape.circle,
+        //                 border:
+        //                     Border.all(color: MyTheme.light_grey, width: 1)),
+        //             child: Padding(
+        //               padding: const EdgeInsets.all(16.0),
+        //               child: Image.asset("assets/top_sellers.png"),
+        //             )),
+        //         Padding(
+        //             padding: const EdgeInsets.only(top: 8),
+        //             child: Text(
+        //                 AppLocalizations.of(context).home_screen_top_sellers,
+        //                 textAlign: TextAlign.center,
+        //                 style: TextStyle(
+        //                     color: Color.fromRGBO(132, 132, 132, 1),
+        //                     fontWeight: FontWeight.w300))),
+        //       ],
+        //     ),
+        //   ),
+        // ),
+        HomeMenuButton(
+          title: AppLocalizations.of(context).home_screen_top_categories,
+          onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return CategoryList(
                 is_top_category: true,
               );
             }));
           },
-          child: Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width / 5 - 4,
-            child: Column(
-              children: [
-                Container(
-                    height: 57,
-                    width: 57,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(color: MyTheme.light_grey, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset("assets/top_categories.png"),
-                    )),
-                Padding(
-                  padding: const EdgeInsets.only(top: 8),
-                  child: Text(
-                    AppLocalizations.of(context).home_screen_top_categories,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        color: Color.fromRGBO(132, 132, 132, 1),
-                        fontWeight: FontWeight.w300),
-                  ),
-                )
-              ],
-            ),
-          ),
+          svgImagePath: "assets/svg/Categories.jfif",
         ),
-        GestureDetector(
-          onTap: () {
+        HomeMenuButton(
+          title: AppLocalizations.of(context).home_screen_brands,
+          onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return Filter(
                 selected_filter: "brands",
               );
             }));
           },
-          child: Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width / 5 - 4,
-            child: Column(
-              children: [
-                Container(
-                    height: 57,
-                    width: 57,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(color: MyTheme.light_grey, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset("assets/brands.png"),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(AppLocalizations.of(context).home_screen_brands,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(132, 132, 132, 1),
-                            fontWeight: FontWeight.w300))),
-              ],
-            ),
-          ),
+          svgImagePath: "assets/svg/brands.svg",
         ),
-        GestureDetector(
-          onTap: () {
+
+        HomeMenuButton(
+          title: AppLocalizations.of(context).home_screen_top_sellers,
+          onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return TopSellingProducts();
             }));
           },
-          child: Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width / 5 - 4,
-            child: Column(
-              children: [
-                Container(
-                    height: 57,
-                    width: 57,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(color: MyTheme.light_grey, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset("assets/top_sellers.png"),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                        AppLocalizations.of(context).home_screen_top_sellers,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(132, 132, 132, 1),
-                            fontWeight: FontWeight.w300))),
-              ],
-            ),
-          ),
+          svgImagePath: "assets/svg/top_seller.svg",
         ),
-        GestureDetector(
-          onTap: () {
+        HomeMenuButton(
+          title: AppLocalizations.of(context).home_screen_todays_deal,
+          onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return TodaysDealProducts();
             }));
           },
-          child: Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width / 5 - 4,
-            child: Column(
-              children: [
-                Container(
-                    height: 57,
-                    width: 57,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(color: MyTheme.light_grey, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset("assets/todays_deal.png"),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                        AppLocalizations.of(context).home_screen_todays_deal,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(132, 132, 132, 1),
-                            fontWeight: FontWeight.w300))),
-              ],
-            ),
-          ),
+          svgImagePath: "assets/svg/todays_deals.svg",
         ),
-        GestureDetector(
-          onTap: () {
+        HomeMenuButton(
+          title: AppLocalizations.of(context).home_screen_flash_deal,
+          onPressed: () {
             Navigator.push(context, MaterialPageRoute(builder: (context) {
               return FlashDealList();
             }));
           },
-          child: Container(
-            height: 100,
-            width: MediaQuery.of(context).size.width / 5 - 4,
-            child: Column(
-              children: [
-                Container(
-                    height: 57,
-                    width: 57,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.circle,
-                        border:
-                            Border.all(color: MyTheme.light_grey, width: 1)),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Image.asset("assets/flash_deal.png"),
-                    )),
-                Padding(
-                    padding: const EdgeInsets.only(top: 8),
-                    child: Text(
-                        AppLocalizations.of(context).home_screen_flash_deal,
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Color.fromRGBO(132, 132, 132, 1),
-                            fontWeight: FontWeight.w300))),
-              ],
-            ),
-          ),
-        )
+          svgImagePath: "assets/svg/flash_sale.svg",
+        ),
+        // GestureDetector(
+        //   onTap: () {
+        //     Navigator.push(context, MaterialPageRoute(builder: (context) {
+        //       return FlashDealList();
+        //     }));
+        //   },
+        //   child: Container(
+        //     height: 100,
+        //     width: MediaQuery.of(context).size.width / 5 - 4,
+        //     child: Column(
+        //       children: [
+        //         Container(
+        //             height: 57,
+        //             width: 57,
+        //             decoration: BoxDecoration(
+        //                 shape: BoxShape.circle,
+        //                 border:
+        //                     Border.all(color: MyTheme.light_grey, width: 1)),
+        //             child: Padding(
+        //               padding: const EdgeInsets.all(16.0),
+        //               child: Image.asset("assets/flash_deal.png"),
+        //             )),
+        //         Padding(
+        //             padding: const EdgeInsets.only(top: 8),
+        //             child: Text(
+        //                 AppLocalizations.of(context).home_screen_flash_deal,
+        //                 textAlign: TextAlign.center,
+        //                 style: TextStyle(
+        //                     color: Color.fromRGBO(132, 132, 132, 1),
+        //                     fontWeight: FontWeight.w300))),
+        //       ],
+        //     ),
+        //   ),
+        // )
       ],
     );
   }
@@ -806,22 +827,14 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
                     }),
               )
             : Builder(
-                builder: (context) => Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 18.0, horizontal: 0.0),
-                  child: Container(
-                    child: Image.asset(
-                      'assets/hamburger.png',
-                      height: 16,
-                      //color: MyTheme.dark_grey,
-                      color: MyTheme.dark_grey,
-                    ),
-                  ),
+                builder: (context) => const Icon(
+                  Icons.filter_list,
+                  color: Colors.white,
                 ),
               ),
       ),
       title: Container(
-        height: kToolbarHeight +
+        height: ScreenUtil().setHeight(60) +
             statusBarHeight -
             (MediaQuery.of(context).viewPadding.top > 40 ? 16.0 : 16.0),
         //MediaQuery.of(context).viewPadding.top is the statusbar height, with a notch phone it results almost 50, without a notch it shows 24.0.For safety we have checked if its greater than thirty
@@ -883,13 +896,13 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
           enabledBorder: OutlineInputBorder(
             borderSide: BorderSide(color: MyTheme.textfield_grey, width: 0.5),
             borderRadius: const BorderRadius.all(
-              const Radius.circular(16.0),
+              const Radius.circular(7.0),
             ),
           ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide(color: MyTheme.textfield_grey, width: 1.0),
             borderRadius: const BorderRadius.all(
-              const Radius.circular(16.0),
+              const Radius.circular(7.0),
             ),
           ),
           prefixIcon: Padding(
@@ -913,6 +926,65 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
         child: Text(_totalProductData == _featuredProductList.length
             ? AppLocalizations.of(context).common_no_more_products
             : AppLocalizations.of(context).common_loading_more_products),
+      ),
+    );
+  }
+}
+
+class HomeMenuButton extends StatelessWidget {
+  const HomeMenuButton({
+    Key key,
+    @required this.onPressed,
+    @required this.title,
+    @required this.svgImagePath,
+  }) : super(key: key);
+
+  final void Function() onPressed;
+  final String title;
+  final String svgImagePath;
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        height: 100,
+        width: ScreenUtil().setWidth(57),
+        child: Column(
+          children: [
+            Container(
+              height: ScreenUtil().setHeight(45),
+              width: ScreenUtil().setWidth(45),
+              decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  border: Border.all(color: MyTheme.light_grey, width: 1)),
+              child: ClipOval(
+                child: svgImagePath.endsWith('jfif')
+                    ? Image.asset(
+                        svgImagePath,
+                        fit: BoxFit.fill,
+                      )
+                    : SvgPicture.asset(
+                        svgImagePath,
+                        fit: BoxFit.cover,
+                      ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  // color: Color.fromRGBO(132, 132, 132, 1),
+                  color: Colors.white,
+                  fontWeight: FontWeight.w300,
+                  fontSize: ScreenUtil().setSp(11),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

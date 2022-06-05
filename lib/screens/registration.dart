@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/custom/intl_phone_input.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:active_ecommerce_flutter/addon_config.dart';
 import 'package:active_ecommerce_flutter/screens/otp.dart';
@@ -154,25 +156,30 @@ class _RegistrationState extends State<Registration> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40.0, bottom: 15),
                     child: Container(
-                      width: 100,
-                      height: 100,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      // width: 100,
+                      // height: 100,
+                      child: SvgPicture.asset(
+                        "assets/svg/logoDarkMode.svg",
+                        height: ScreenUtil().setHeight(70),
+                        width: ScreenUtil().setWidth(70),
+                      ),
                     ),
                   ),
+                  SizedBox(height: ScreenUtil().setHeight(15)),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
                       "${AppLocalizations.of(context).registration_screen_join} " +
                           AppConfig.app_name,
                       style: TextStyle(
-                          color: MyTheme.accent_color,
+                          color: MyTheme.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
+                  SizedBox(height: ScreenUtil().setHeight(20)),
                   Container(
-                    width: _screenWidth * (3 / 4),
+                    width: _screenWidth * 0.94,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -182,7 +189,8 @@ class _RegistrationState extends State<Registration> {
                             AppLocalizations.of(context)
                                 .registration_screen_name,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -211,7 +219,8 @@ class _RegistrationState extends State<Registration> {
                                 : AppLocalizations.of(context)
                                     .registration_screen_phone,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -245,10 +254,9 @@ class _RegistrationState extends State<Registration> {
                                           AppLocalizations.of(context)
                                               .registration_screen_or_register_with_phone,
                                           style: TextStyle(
-                                              color: MyTheme.accent_color,
-                                              fontStyle: FontStyle.italic,
-                                              decoration:
-                                                  TextDecoration.underline),
+                                              color: MyTheme.white,
+                                              fontSize: ScreenUtil().setSp(15),
+                                              fontWeight: FontWeight.w600),
                                         ),
                                       )
                                     : Container()
@@ -318,7 +326,8 @@ class _RegistrationState extends State<Registration> {
                           child: Text(
                             AppLocalizations.of(context).login_screen_password,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -343,11 +352,13 @@ class _RegistrationState extends State<Registration> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: ScreenUtil().setHeight(5)),
                               Text(
                                 AppLocalizations.of(context)
                                     .registration_screen_password_length_recommendation,
                                 style: TextStyle(
-                                    color: MyTheme.dark_grey,
+                                    color: MyTheme.white,
+                                    fontSize: ScreenUtil().setSp(12),
                                     fontStyle: FontStyle.italic),
                               )
                             ],
@@ -359,7 +370,8 @@ class _RegistrationState extends State<Registration> {
                             AppLocalizations.of(context)
                                 .registration_screen_retype_password,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -394,7 +406,7 @@ class _RegistrationState extends State<Registration> {
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.accent_color,
+                              color: MyTheme.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
@@ -402,9 +414,9 @@ class _RegistrationState extends State<Registration> {
                                 AppLocalizations.of(context)
                                     .registration_screen_register_sign_up,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: MyTheme.accent_color,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {
                                 onPressSignUp();
@@ -419,11 +431,13 @@ class _RegistrationState extends State<Registration> {
                             AppLocalizations.of(context)
                                 .registration_screen_already_have_account,
                             style: TextStyle(
-                                color: MyTheme.medium_grey, fontSize: 12),
+                              color: MyTheme.white,
+                              fontSize: ScreenUtil().setSp(15),
+                            ),
                           )),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Container(
                             height: 45,
                             decoration: BoxDecoration(
@@ -434,7 +448,7 @@ class _RegistrationState extends State<Registration> {
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.golden,
+                              color: MyTheme.accent_color,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
                                       Radius.circular(12.0))),
@@ -444,7 +458,7 @@ class _RegistrationState extends State<Registration> {
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {
                                 Navigator.push(context,

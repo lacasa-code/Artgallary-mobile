@@ -196,9 +196,14 @@ class _WalletState extends State<Wallet> {
       width: double.infinity,
       color: Colors.white,
       child: Center(
-        child: Text(_totalRechargeData == _rechargeList.length
-            ? AppLocalizations.of(context).common_no_more_histories
-            : AppLocalizations.of(context).common_loading_more_histories),
+        child: Text(
+          _totalRechargeData == _rechargeList.length
+              ? AppLocalizations.of(context).common_no_more_histories
+              : AppLocalizations.of(context).common_loading_more_histories,
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
       ),
     );
   }
@@ -209,7 +214,7 @@ class _WalletState extends State<Wallet> {
       centerTitle: true,
       leading: Builder(
         builder: (context) => IconButton(
-          icon: Icon(Icons.arrow_back, color: MyTheme.dark_grey),
+          icon: Icon(Icons.arrow_back, color: MyTheme.white),
           onPressed: () {
             if (widget.from_recharge) {
               Navigator.push(context, MaterialPageRoute(builder: (context) {
@@ -223,7 +228,7 @@ class _WalletState extends State<Wallet> {
       ),
       title: Text(
         AppLocalizations.of(context).wallet_screen_my_wallet,
-        style: TextStyle(fontSize: 16, color: MyTheme.accent_color),
+        style: TextStyle(fontSize: 16, color: MyTheme.white),
       ),
       elevation: 0.0,
       titleSpacing: 0,
@@ -251,7 +256,11 @@ class _WalletState extends State<Wallet> {
     } else if (_totalRechargeData == 0) {
       return Center(
           child: Text(
-              AppLocalizations.of(context).wallet_screen_no_recharges_yet));
+        AppLocalizations.of(context).wallet_screen_no_recharges_yet,
+        style: TextStyle(
+          color: Colors.white,
+        ),
+      ));
     } else {
       return Container(); // should never be happening
     }
@@ -455,7 +464,7 @@ class _WalletState extends State<Wallet> {
           child: Text(
             AppLocalizations.of(context).wallet_screen_wallet_recharge_history,
             style: TextStyle(
-                color: MyTheme.font_grey,
+                color: MyTheme.white,
                 fontSize: 14,
                 fontWeight: FontWeight.w600),
           ),

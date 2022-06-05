@@ -7,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:active_ecommerce_flutter/custom/input_decorations.dart';
 import 'package:active_ecommerce_flutter/custom/intl_phone_input.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:active_ecommerce_flutter/addon_config.dart';
 import 'package:active_ecommerce_flutter/screens/registration.dart';
@@ -239,30 +241,38 @@ class _LoginState extends State<Login> {
                   Padding(
                     padding: const EdgeInsets.only(top: 40.0, bottom: 15),
                     child: Container(
-                      width: 150,
-                      height: 150,
-                      child: Image.asset(
-                          'assets/login_registration_form_logo.png'),
+                      // width: 150,
+                      // height: 150,
+                      child: SvgPicture.asset(
+                        "assets/svg/logoDarkMode.svg",
+                        height: ScreenUtil().setHeight(70),
+                        width: ScreenUtil().setWidth(70),
+                      ),
                     ),
+                  ),
+                  SizedBox(
+                    height: ScreenUtil().setHeight(30),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(bottom: 20.0),
                     child: Text(
-                      "${AppLocalizations.of(context).login_screen_login_to} " +
-                          AppConfig.app_name,
+                      "${AppLocalizations.of(context).login_screen_login_to}",
                       style: TextStyle(
-                          color: MyTheme.accent_color,
+                          color: MyTheme.white,
                           fontSize: 18,
                           fontWeight: FontWeight.w600),
                     ),
                   ),
+                  SizedBox(
+                    height: ScreenUtil().setHeight(30),
+                  ),
                   Container(
-                    width: _screenWidth * (3 / 4),
+                    width: _screenWidth * 0.94,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 4.0),
+                          padding: const EdgeInsets.only(bottom: 10.0),
                           child: Text(
                             _login_by == "email"
                                 ? AppLocalizations.of(context)
@@ -270,7 +280,8 @@ class _LoginState extends State<Login> {
                                 : AppLocalizations.of(context)
                                     .login_screen_phone,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -304,7 +315,8 @@ class _LoginState extends State<Login> {
                                           AppLocalizations.of(context)
                                               .login_screen_or_login_with_phone,
                                           style: TextStyle(
-                                              color: MyTheme.accent_color,
+                                              color: MyTheme.white,
+                                              fontSize: ScreenUtil().setSp(15),
                                               fontStyle: FontStyle.italic,
                                               decoration:
                                                   TextDecoration.underline),
@@ -378,11 +390,12 @@ class _LoginState extends State<Login> {
                             ),
                           ),
                         Padding(
-                          padding: const EdgeInsets.only(bottom: 4.0),
+                          padding: const EdgeInsets.only(bottom: 10.0),
                           child: Text(
                             AppLocalizations.of(context).login_screen_password,
                             style: TextStyle(
-                                color: MyTheme.accent_color,
+                                color: MyTheme.white,
+                                fontSize: ScreenUtil().setSp(15),
                                 fontWeight: FontWeight.w600),
                           ),
                         ),
@@ -407,6 +420,9 @@ class _LoginState extends State<Login> {
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: ScreenUtil().setHeight(8),
+                              ),
                               GestureDetector(
                                 onTap: () {
                                   Navigator.push(context,
@@ -418,13 +434,17 @@ class _LoginState extends State<Login> {
                                   AppLocalizations.of(context)
                                       .login_screen_forgot_password,
                                   style: TextStyle(
-                                      color: MyTheme.accent_color,
+                                      color: MyTheme.white,
+                                      fontSize: ScreenUtil().setSp(15),
                                       fontStyle: FontStyle.italic,
                                       decoration: TextDecoration.underline),
                                 ),
                               )
                             ],
                           ),
+                        ),
+                        SizedBox(
+                          height: ScreenUtil().setHeight(60),
                         ),
                         Padding(
                           padding: const EdgeInsets.only(top: 30.0),
@@ -434,19 +454,19 @@ class _LoginState extends State<Login> {
                                 border: Border.all(
                                     color: MyTheme.textfield_grey, width: 1),
                                 borderRadius: const BorderRadius.all(
-                                    Radius.circular(12.0))),
+                                    Radius.circular(10.0))),
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
-                              color: MyTheme.golden,
+                              color: MyTheme.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
-                                      Radius.circular(12.0))),
+                                      Radius.circular(10.0))),
                               child: Text(
                                 AppLocalizations.of(context)
                                     .login_screen_log_in,
                                 style: TextStyle(
-                                    color: Colors.white,
+                                    color: MyTheme.kMainBackgroundColor,
                                     fontSize: 14,
                                     fontWeight: FontWeight.w600),
                               ),
@@ -463,32 +483,34 @@ class _LoginState extends State<Login> {
                             AppLocalizations.of(context)
                                 .login_screen_or_create_new_account,
                             style: TextStyle(
-                                color: MyTheme.medium_grey, fontSize: 12),
+                              color: MyTheme.white,
+                              fontSize: ScreenUtil().setSp(17),
+                            ),
                           )),
                         ),
                         Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
+                          padding: const EdgeInsets.only(top: 15.0),
                           child: Container(
                             height: 45,
                             decoration: BoxDecoration(
                                 border: Border.all(
                                     color: MyTheme.textfield_grey, width: 1),
                                 borderRadius: const BorderRadius.all(
-                                    Radius.circular(12.0))),
+                                    Radius.circular(10.0))),
                             child: FlatButton(
                               minWidth: MediaQuery.of(context).size.width,
                               //height: 50,
                               color: MyTheme.accent_color,
                               shape: RoundedRectangleBorder(
                                   borderRadius: const BorderRadius.all(
-                                      Radius.circular(12.0))),
+                                      Radius.circular(10.0))),
                               child: Text(
                                 AppLocalizations.of(context)
                                     .login_screen_sign_up,
                                 style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 14,
-                                    fontWeight: FontWeight.w600),
+                                    fontWeight: FontWeight.bold),
                               ),
                               onPressed: () {
                                 Navigator.push(context,
@@ -509,7 +531,10 @@ class _LoginState extends State<Login> {
                               AppLocalizations.of(context)
                                   .login_screen_login_with,
                               style: TextStyle(
-                                  color: MyTheme.medium_grey, fontSize: 14),
+                                color: MyTheme.medium_grey,
+                                fontSize: 14,
+                                fontWeight: FontWeight.bold,
+                              ),
                             )),
                           ),
                         ),

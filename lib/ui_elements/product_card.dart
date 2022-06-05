@@ -188,7 +188,7 @@ class _ProductCardState extends State<ProductCard> {
                         //   EdgeInsets.zero,
                         // ),
                         backgroundColor: MaterialStateProperty.all(
-                          MyTheme.golden,
+                          MyTheme.accent_color,
                         ),
                       ),
                       onPressed: () async {
