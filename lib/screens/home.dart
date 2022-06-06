@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:active_ecommerce_flutter/data_model/product_mini_response.dart';
 import 'package:active_ecommerce_flutter/helpers/constants.dart';
 import 'package:active_ecommerce_flutter/my_theme.dart';
@@ -188,6 +190,7 @@ class _HomeState extends State<Home> with TickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     final double statusBarHeight = MediaQuery.of(context).padding.top;
     //print(MediaQuery.of(context).viewPadding.top);
 

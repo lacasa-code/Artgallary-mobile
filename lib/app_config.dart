@@ -14,7 +14,7 @@ class AppConfig {
   static const bool HTTPS = false;
 
   //configure this
-  static const DOMAIN_PATH = "artgallery.lacasacode.com"; //localhost
+  static const DOMAIN_PATH = "oryx44.com"; //localhost
   //static const DOMAIN_PATH = "demo.activeitzone.com/ecommerce_flutter_demo"; //inside a folder
   //static const DOMAIN_PATH = "mydomain.com"; // directly inside the public folder
 

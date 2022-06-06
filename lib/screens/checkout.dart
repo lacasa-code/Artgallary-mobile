@@ -732,6 +732,8 @@ class _CheckoutState extends State<Checkout> {
 
   Row buildApplyCouponRow(BuildContext context) {
     return Row(
+      textDirection:
+          app_language.$ == 'en' ? TextDirection.rtl : TextDirection.ltr,
       children: [
         Container(
           height: 42,

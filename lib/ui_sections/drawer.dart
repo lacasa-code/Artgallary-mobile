@@ -1,3 +1,4 @@
+import 'package:active_ecommerce_flutter/my_theme.dart';
 import 'package:active_ecommerce_flutter/providers/categories_provider.dart';
 import 'package:active_ecommerce_flutter/screens/category_products.dart';
 import 'package:active_ecommerce_flutter/screens/change_language.dart';
@@ -64,6 +65,7 @@ class _MainDrawerState extends State<MainDrawer> {
   @override
   Widget build(BuildContext context) {
     return Drawer(
+      backgroundColor: MyTheme.accent_color,
       child: Directionality(
         textDirection:
             app_language_rtl.$ ? TextDirection.rtl : TextDirection.ltr,
@@ -79,26 +81,36 @@ class _MainDrawerState extends State<MainDrawer> {
                             AppConfig.BASE_PATH + "${avatar_original.$}",
                           ),
                         ),
-                        title: Text("${user_name.$}"),
+                        title: Text(
+                          "${user_name.$}",
+                          style: TextStyle(
+                            color: Colors.white,
+                          ),
+                        ),
                         subtitle: user_name.$ != "" && user_name.$ != null
-                            ? Text("${user_name.$}")
-                            : Text("${user_phone.$}"))
+                            ? Text("${user_name.$}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ))
+                            : Text("${user_phone.$}",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                )))
                     : Text(
                         AppLocalizations.of(context).main_drawer_not_logged_in,
-                        style: TextStyle(
-                            color: Color.fromRGBO(153, 153, 153, 1),
-                            fontSize: 14)),
+                        style: TextStyle(color: Colors.white, fontSize: 14)),
                 Divider(),
                 ListTile(
                     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-                    leading: Image.asset("assets/language.png",
-                        height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
+                    leading: Image.asset(
+                      "assets/language.png",
+                      height: 16,
+                      color: Colors.white,
+                    ),
                     title: Text(
                         AppLocalizations.of(context)
                             .main_drawer_change_language,
-                        style: TextStyle(
-                            color: Color.fromRGBO(153, 153, 153, 1),
-                            fontSize: 14)),
+                        style: TextStyle(color: Colors.white, fontSize: 14)),
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -107,12 +119,13 @@ class _MainDrawerState extends State<MainDrawer> {
                     }),
                 ListTile(
                     visualDensity: VisualDensity(horizontal: -4, vertical: -4),
-                    leading: Image.asset("assets/home.png",
-                        height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
+                    leading: Image.asset(
+                      "assets/home.png",
+                      height: 16,
+                      color: Colors.white,
+                    ),
                     title: Text(AppLocalizations.of(context).main_drawer_home,
-                        style: TextStyle(
-                            color: Color.fromRGBO(153, 153, 153, 1),
-                            fontSize: 14)),
+                        style: TextStyle(color: Colors.white, fontSize: 14)),
                     onTap: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) {
@@ -125,15 +138,17 @@ class _MainDrawerState extends State<MainDrawer> {
                     expanded
                         ? Icons.keyboard_arrow_up_outlined
                         : Icons.keyboard_arrow_down_outlined,
+                    color: Colors.white,
                   ),
-                  leading: Image.asset("assets/categories.png",
-                      height: 16, color: Color.fromRGBO(153, 153, 153, 1)),
+                  leading: Image.asset(
+                    "assets/categories.png",
+                    height: 16,
+                    color: Colors.white,
+                  ),
                   title: Text(
                       AppLocalizations.of(context)
                           .main_screen_bottom_navigation_categories,
-                      style: TextStyle(
-                          color: Color.fromRGBO(153, 153, 153, 1),
-                          fontSize: 14)),
+                      style: TextStyle(color: Colors.white, fontSize: 14)),
                   onTap: () {
                     setState(() {
                       expanded = !expanded;
@@ -153,9 +168,11 @@ class _MainDrawerState extends State<MainDrawer> {
                               child: ListTile(
                                 visualDensity:
                                     VisualDensity(horizontal: -4, vertical: -4),
-                                leading: Image.asset("assets/categories.png",
-                                    height: 16,
-                                    color: Color.fromRGBO(153, 153, 153, 1)),
+                                leading: Image.asset(
+                                  "assets/categories.png",
+                                  height: 16,
+                                  color: Colors.white,
+                                ),
                                 // leading: Image.network(
                                 //   AppConfig.BASE_PATH + category.banner,
                                 //   height: 30,
@@ -164,8 +181,7 @@ class _MainDrawerState extends State<MainDrawer> {
                                 // ),
                                 title: Text(category.name,
                                     style: TextStyle(
-                                        color: Color.fromRGBO(153, 153, 153, 1),
-                                        fontSize: 14)),
+                                        color: Colors.white, fontSize: 14)),
                                 onTap: () {
                                   Navigator.push(context,
                                       MaterialPageRoute(builder: (context) {
@@ -186,14 +202,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/profile.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/profile.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_profile,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -205,14 +222,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/order.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/order.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_orders,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -224,15 +242,16 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/heart.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/heart.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context)
                                 .main_drawer_my_wishlist,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -244,14 +263,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/chat.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/chat.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_messages,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -263,14 +283,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/wallet.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/wallet.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_wallet,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -283,14 +304,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/login.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/login.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_login,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
@@ -302,14 +324,15 @@ class _MainDrawerState extends State<MainDrawer> {
                     ? ListTile(
                         visualDensity:
                             VisualDensity(horizontal: -4, vertical: -4),
-                        leading: Image.asset("assets/logout.png",
-                            height: 16,
-                            color: Color.fromRGBO(153, 153, 153, 1)),
+                        leading: Image.asset(
+                          "assets/logout.png",
+                          height: 16,
+                          color: Colors.white,
+                        ),
                         title: Text(
                             AppLocalizations.of(context).main_drawer_logout,
-                            style: TextStyle(
-                                color: Color.fromRGBO(153, 153, 153, 1),
-                                fontSize: 14)),
+                            style:
+                                TextStyle(color: Colors.white, fontSize: 14)),
                         onTap: () {
                           onTapLogout(context);
                         })
